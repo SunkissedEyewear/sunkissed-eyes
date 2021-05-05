@@ -101,7 +101,7 @@ export default function Product({ data: { product, suggestions } }) {
   const hasMultipleImages = images.length > 1
 
   return (
-    <Layout>
+    <>
       <Seo
         title={title}
         description={description}
@@ -210,7 +210,7 @@ export default function Product({ data: { product, suggestions } }) {
           </div>
         </div>
       </main>
-    </Layout>
+    </>
   )
 }
 

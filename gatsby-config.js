@@ -24,8 +24,17 @@ module.exports = {
         shopifyConnections: ["collections"],
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images`,
+      },
+    },
     "gatsby-plugin-image",
     "gatsby-plugin-sharp",
+    "gatsby-plugin-layout",
+    "gatsby-plugin-sass",
     "gatsby-transformer-sharp",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sitemap",

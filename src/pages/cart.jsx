@@ -30,7 +30,7 @@ export default function CartPage() {
   }
 
   return (
-    <Layout>
+    <>
       <main className={wrap}>
         {emptyCart ? (
           <div className={emptyStateContainer}>
@@ -116,6 +116,6 @@ export default function CartPage() {
           </>
         )}
       </main>
-    </Layout>
+    </>
   )
 }

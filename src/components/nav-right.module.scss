@@ -1,0 +1,27 @@
+.navRight {
+  grid-area: rNav;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // background-color: lightskyblue;
+  padding: calc(var(--space-3xl) * 2);
+}
+
+.searchButton {
+  color: var(--text-color-secondary);
+  grid-area: searchButton;
+  width: var(--size-input);
+  height: var(--size-input);
+  display: grid;
+  place-items: center;
+}
+
+.searchButton:hover {
+  color: var(--text-color);
+}
+
+.searchButton[aria-current="page"] {
+  color: var(--primary);
+}

@@ -1,0 +1,103 @@
+.collage {
+  display: grid;
+  gap: var(--space-3xl);
+  grid-template-rows: repeat(3, 55vh);
+  grid-template-columns: 100%;
+}
+
+.collageRow {
+  display: grid;
+  gap: var(--space-3xl);
+  grid-template-rows: 100%;
+  grid-template-columns: 4fr 3fr;
+  &:nth-child(2n) {
+    grid-template-columns: 3fr 4fr;
+  }
+}
+
+.photo {
+  overflow: hidden;
+  div {
+    height: 100%;
+    width: 100%;
+  }
+  img {
+    object-fit: contain;
+    object-position: center;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// .container {
+//   padding-left: var(--size-gutter-raw);
+//   padding-right: var(--size-gutter-raw);
+//   padding-top: var(--space-lg);
+//   padding-bottom: var(--space-3xl);
+//   max-width: 76ch;
+// }
+
+// .intro {
+//   padding-bottom: var(--space-lg);
+//   line-height: var(--dense);
+//   font-size: var(--text-display);
+//   color: var(--text-color-secondary);
+// }
+
+// .callOut {
+//   padding-bottom: var(--space-lg);
+//   font-size: var(--text-display);
+//   font-weight: var(--bold);
+//   line-height: var(--dense);
+//   line-height: var(--dense);
+//   letter-spacing: var(--tight);
+//   color: var(--text-color-secondary);
+// }
+
+// .callOut > strong {
+//   text-decoration: underline;
+// }
+
+// .callToAction {
+//   font-size: var(--text-prose);
+//   line-height: var(--dense);
+//   line-height: var(--dense);
+//   letter-spacing: var(--tight);
+//   color: var(--text-color-secondary);
+// }
+
+// .deployButton {
+//   margin-top: var(--space-lg);
+// }

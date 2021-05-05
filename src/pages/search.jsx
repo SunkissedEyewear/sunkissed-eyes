@@ -175,7 +175,7 @@ function SearchPage({
   const productList = (isDefault ? products.edges : data?.products?.edges) || []
 
   return (
-    <Layout>
+    <>
       <h1 className={visuallyHidden}>Search Results</h1>
       <div className={main}>
         <div className={search} aria-hidden={modalOpen}>
@@ -297,7 +297,7 @@ function SearchPage({
           ) : undefined}
         </section>
       </div>
-    </Layout>
+    </>
   )
 }
 

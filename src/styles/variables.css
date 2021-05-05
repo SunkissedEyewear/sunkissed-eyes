@@ -25,6 +25,7 @@
   --space-xl: 20px;
   --space-2xl: 24px;
   --space-3xl: 48px;
+  --space-4xl: 64px;
 
   /* line-height */
   --solid: 1;
@@ -83,7 +84,7 @@
   --input-ui-active: (--text-color);
 
   /* size */
-  --size-input: var(--space-3xl);
+  --size-input: var(--space-4xl);
   --size-gap: 12px;
   --size-gutter-raw: var(--space-2xl);
   --size-gutter: calc(var(--size-gutter-raw) - 12px);
