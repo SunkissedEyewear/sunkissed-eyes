@@ -9,8 +9,9 @@ import {
   productImageStyle,
   productDetailsStyle,
   productVendorStyle,
+  hoverImage,
   productPrice,
-} from "./product-card.module.css"
+} from "./product-card.module.scss"
 
 export function ProductCard({ product }) {
   const {
@@ -18,6 +19,7 @@ export function ProductCard({ product }) {
     priceRangeV2,
     slug,
     images: [firstImage],
+    images: [, , , thirdImage],
     vendor,
     storefrontImages,
   } = product
@@ -28,19 +30,32 @@ export function ProductCard({ product }) {
   )
 
   let storefrontImageData = {}
+  let modelImageData = {}
   if (storefrontImages) {
     const storefrontImage = storefrontImages.edges[0].node
+    const modelImage = storefrontImages.edges[3].node
     try {
       storefrontImageData = getShopifyImage({
         image: storefrontImage,
-        layout: "fixed",
+        layout: "fluid",
         width: 200,
         height: 200,
       })
     } catch (e) {
       console.error(e)
     }
+    try {
+      modelImageData = getShopifyImage({
+        image: modelImage,
+        layout: "fluid",
+        width: 400,
+        height: 400,
+      })
+    } catch (e) {
+      console.error(e)
+    }
   }
+
 
   return (
     <Link
@@ -55,11 +70,17 @@ export function ProductCard({ product }) {
         />
       </div>
       <div className={productDetailsStyle}>
-        <div className={productVendorStyle}>{vendor}</div>
+        {/* <div className={productVendorStyle}>{vendor}</div> */}
         <h2 as="h2" className={productHeadingStyle}>
           {title}
         </h2>
         <div className={productPrice}>{price}</div>
+      </div>
+      <div className={hoverImage}>
+        <GatsbyImage
+          alt={thirdImage?.altText ?? title}
+          image={thirdImage?.gatsbyImageData ?? modelImageData}
+        />
       </div>
     </Link>
   )

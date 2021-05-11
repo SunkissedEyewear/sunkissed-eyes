@@ -1,8 +1,33 @@
 .productCardStyle {
+  position: relative;
   max-width: 400px;
   cursor: pointer;
   text-decoration: none;
-  padding-bottom: var(--space-md);
+  // padding-bottom: var(--space-md);
+  padding: calc(var(--size-gutter-raw) / 1);
+  margin-bottom: var(--size-gutter-raw);
+}
+
+.hoverImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: all .2s ease-out;
+  &:hover {
+    opacity: 1;
+  }
+  [data-gatsby-image-wrapper] {
+    height: 100%;
+    width: 100%;
+  }
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
 }
 
 .productImageStyle {
@@ -12,7 +37,7 @@
 .productDetailsStyle {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   font-weight: var(--semibold);
 }
@@ -23,7 +48,7 @@
 }
 
 .productHeadingStyle {
-  width: 100%;
+  // width: 100%;
   font-size: var(--text-lg);
   text-align: center;
   overflow: hidden;

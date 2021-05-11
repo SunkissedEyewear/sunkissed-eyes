@@ -3,6 +3,9 @@ import { ProductCard } from "./product-card"
 import { listingContainerStyle } from "./product-listing.module.css"
 
 export function ProductListing({ products }) {
+  console.log('products: ', products);
+  
+  
   return (
     <div className={listingContainerStyle}>
       {products.map((p) => (

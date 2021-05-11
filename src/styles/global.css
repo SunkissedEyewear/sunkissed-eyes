@@ -1,6 +1,7 @@
 body {
   font-family: var(--font-body);
   color: var(--text-color);
+  letter-spacing: 1px;
 }
 
 .gatsby-image-wrapper {

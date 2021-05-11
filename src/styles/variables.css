@@ -3,7 +3,8 @@
   /* font-family */
   --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
     sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-
+  --font-body: 'Mulish', sans-serif, "Segoe UI", Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   /* palette */
   --black-fade-5: rgba(0, 0, 0, 0.05);
   --black-fade-40: rgba(0, 0, 0, 0.4);
@@ -12,6 +13,22 @@
   --green-80: #088413;
   --green-50-rgb: 55, 182, 53;
   --white: #ffffff;
+
+  /* z-indeces */
+  --base-two: -200;
+  --base-one: -100;
+  --ground: auto;
+  --level-one: 100;
+  --level-two: 200;
+  --level-three: 300;
+  --level-four: 400;
+  --level-five: 500;
+  --level-six: 600;
+  --level-seven: 700;
+  --level-eight: 800;
+  --level-nine: 900;
+  --level-top: 999;
+
 
   /* radii */
   --radius-sm: 4px;
@@ -34,10 +51,12 @@
   --loose: 2;
 
   /* letter-spacing */
+  --loose: 0.25em;
   --tracked: 0.075em;
   --tight: -0.015em;
 
   /* font-weight */
+  --light: 200;
   --body: 400;
   --medium: 500;
   --semibold: 600;
@@ -112,6 +131,6 @@
 
 @media (min-width: 1280px) {
   :root {
-    --product-grid: repeat(4, 1fr);
+    --product-grid: repeat(3, 1fr);
   }
 }

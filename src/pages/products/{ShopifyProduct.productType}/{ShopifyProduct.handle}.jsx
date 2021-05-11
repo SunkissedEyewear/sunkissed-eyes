@@ -1,9 +1,9 @@
 import * as React from "react"
 import { graphql, Link } from "gatsby"
-import { Layout } from "../../../components/layout"
 import isEqual from "lodash.isequal"
 import { GatsbyImage, getSrc } from "gatsby-plugin-image"
 import { StoreContext } from "../../../context/store-context"
+
 import { AddToCart } from "../../../components/add-to-cart"
 import { NumericInput } from "../../../components/numeric-input"
 import { formatPrice } from "../../../utils/format-price"
@@ -17,6 +17,7 @@ import {
   scrollForMore,
   noImagePreview,
   optionsWrapper,
+  colorOption,
   priceValue,
   selectVariant,
   labelFont,
@@ -24,10 +25,13 @@ import {
   tagList,
   addToCartStyle,
   metaSection,
+  productDetails,
   productDescription,
-} from "./product-page.module.css"
+} from "./product-page.module.scss"
 
 export default function Product({ data: { product, suggestions } }) {
+  const pImageWrapRef = React.useRef(null)
+  
   const {
     options,
     variants,
@@ -68,12 +72,15 @@ export default function Product({ data: { product, suggestions } }) {
 
   const handleOptionChange = (index, event) => {
     const value = event.target.value
+    
+    
 
     if (value === "") {
       return
     }
 
     const currentOptions = [...variant.selectedOptions]
+    
 
     currentOptions[index] = {
       ...currentOptions[index],
@@ -107,11 +114,15 @@ export default function Product({ data: { product, suggestions } }) {
         description={description}
         image={getSrc(firstImage.gatsbyImageData)}
       />
-      <main>
+      <main data-scroll-container>
         <div className={container}>
           <div className={productBox}>
             {hasImages && (
-              <div className={productImageWrapper}>
+              <div
+                className={productImageWrapper}
+                ref={pImageWrapRef}
+                data-scroll-section
+              >
                 <div
                   role="group"
                   aria-label="gallery"
@@ -146,21 +157,43 @@ export default function Product({ data: { product, suggestions } }) {
               </div>
             )}
 
-            <div>
-              <div className={breadcrumb}>
+            <div className={productDetails}>
+              {/* <div className={breadcrumb}>
                 <Link to={product.productTypeSlug}>{product.productType}</Link>
                 <ChevronIcon size={12} />
-              </div>
+              </div> */}
               <h1 className={header}>{title}</h1>
-              <p className={productDescription}>{description}</p>
+
               <h2 className={priceValue}>
                 <span>{price}</span>
               </h2>
+              <h4>colors</h4>
               <fieldset className={optionsWrapper}>
                 {hasVariants &&
-                  options.map(({ id, name, values }, index) => (
-                    <div className={selectVariant}>
-                      <select
+                  options[0].values.map((value, index) => {
+                    const colors = [
+                      "#272727",
+                      "#4f88bb",
+                      "#B69900",
+                      "#C4C4C4",
+                      "#cc7b8a5",
+                    ]
+
+                    return (
+                      <div className={selectVariant}>
+                        <div
+                          class={colorOption}
+                          id={value}
+                          style={{
+                            background: colors[index],
+                            border: `2px solid ${colors[index]}`,
+                          }}
+                          type="radio"
+                          name="options"
+                          value={value}
+                          onClick={(event) => handleOptionChange(index, event)}
+                        />
+                        {/* <select
                         aria-label="Variants"
                         onBlur={(event) => handleOptionChange(index, event)}
                         key={id}
@@ -171,9 +204,10 @@ export default function Product({ data: { product, suggestions } }) {
                             {value}
                           </option>
                         ))}
-                      </select>
-                    </div>
-                  ))}
+                      </select> */}
+                      </div>
+                    )
+                  })}
               </fieldset>
               <div className={addToCartStyle}>
                 <NumericInput

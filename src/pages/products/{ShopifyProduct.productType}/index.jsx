@@ -12,7 +12,7 @@ export default function ProductTypeIndex({
   pageContext: { productType },
 }) {
   return (
-    <Layout>
+    <>
       <Seo title={`Category: ${productType}`} />
       <h1 className={title}>{productType}</h1>
       <ProductListing products={products.nodes} />
@@ -21,7 +21,7 @@ export default function ProductTypeIndex({
           More Products
         </MoreButton>
       )}
-    </Layout>
+    </>
   )
 }
 
