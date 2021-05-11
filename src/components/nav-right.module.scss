@@ -1,27 +1,61 @@
 .navRight {
   grid-area: rNav;
-  height: 100%;
+  height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  // background-color: lightskyblue;
+  justify-content: space-between;
   padding: calc(var(--space-3xl) * 2);
+  & > * {
+    transition: all .2s;
+  }
 }
 
-.searchButton {
+.internal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.social {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.navRightButton {
   color: var(--text-color-secondary);
-  grid-area: searchButton;
   width: var(--size-input);
   height: var(--size-input);
   display: grid;
   place-items: center;
 }
 
-.searchButton:hover {
+.navRightButton:hover {
   color: var(--text-color);
 }
 
-.searchButton[aria-current="page"] {
+.navRightButton[aria-current="page"] {
   color: var(--primary);
+}
+
+.account {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: calc(var(--size-input) / 1.8);
+}
+
+.rotateWrapper {
+  cursor: pointer;
+  transform: rotate(90deg);
+  color: var(--text-color-secondary);
+  letter-spacing: 2px;
+  line-height: 120%;
+  &:hover {
+    color: var(--text-color);
+  }
 }

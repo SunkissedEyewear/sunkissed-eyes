@@ -31,6 +31,14 @@ export function Navigation({ className }) {
         to="/products/"
         activeClassName={activeLink}
       >
+        collections
+      </Link>
+      <Link
+        key="All"
+        className={navLink}
+        to="/products/"
+        activeClassName={activeLink}
+      >
         shop insta
       </Link>
       {productTypes.map((name) => (
@@ -43,6 +51,22 @@ export function Navigation({ className }) {
           {name}
         </Link>
       ))}
+      <Link
+        key="All"
+        className={navLink}
+        to="/products/"
+        activeClassName={activeLink}
+      >
+        blog
+      </Link>
+      <Link
+        key="All"
+        className={navLink}
+        to="/products/"
+        activeClassName={activeLink}
+      >
+        face shapes
+      </Link>
       <Link
         key="All"
         className={navLink}
