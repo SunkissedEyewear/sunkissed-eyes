@@ -4,8 +4,8 @@ import { useStaticQuery, graphql } from "gatsby"
 import { useLocation } from "@reach/router"
 
 export function Seo({
-  title = "",
-  description = "",
+  title = "SNKSD",
+  description = "Eyewear",
   pathname = "",
   image = "",
   children = null,

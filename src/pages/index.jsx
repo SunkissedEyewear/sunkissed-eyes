@@ -82,6 +82,14 @@ export default function IndexPage({ data }) {
           <GatsbyImage loading="eager" image={images[9]}/>
         </div>
       </div>
+      <div className={collageRow}>
+        <div className={photo} >
+          <GatsbyImage loading="eager" image={images[10]}/>
+        </div>
+        <div className={photo} >
+          <GatsbyImage backgroundPosition={'left'} loading="eager" image={images[11]}/>
+        </div>
+      </div>
     </section>
   )
 }

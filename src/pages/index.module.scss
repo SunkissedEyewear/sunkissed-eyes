@@ -1,7 +1,7 @@
 .collage {
   display: grid;
   gap: var(--space-3xl);
-  grid-template-rows: repeat(3, 55vh);
+  grid-template-rows: repeat(6, 60vh);
   grid-template-columns: 100%;
 }
 
@@ -17,6 +17,11 @@
 
 .photo {
   overflow: hidden;
+  &:hover {
+    [data-gatsby-image-wrapper] img {
+      transform: scale(1.1) !important;
+    }
+  }
   div {
     height: 100%;
     width: 100%;
@@ -24,6 +29,7 @@
   img {
     object-fit: contain;
     object-position: center;
+    transition: all 2.5s ease-in !important;
   }
 }
 

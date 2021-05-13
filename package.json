@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-shopify",
+  "name": "sunkissed-eyewear",
   "version": "1.0.0",
   "private": true,
-  "description": "A Gatsby starter using the latest Shopify plugin showcasing a store with product overview, individual product pages, and a cart.",
-  "author": "LekoArts <hello@lekoarts.de>",
+  "description": "ECommerce site selling sunglasses and other eyewear.",
+  "author": "James Walker",
   "license": "0BSD",
   "keywords": [
     "gatsby",
