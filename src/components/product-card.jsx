@@ -13,6 +13,8 @@ import {
   productPrice,
 } from "./product-card.module.scss"
 
+import { searchProductImage, defaultProductImage } from '../pages/search-page.module.scss'
+
 export function ProductCard({ product }) {
   const {
     title,
@@ -23,7 +25,9 @@ export function ProductCard({ product }) {
     vendor,
     storefrontImages,
   } = product
-
+  
+  console.log('storefrontImages from product card: ', storefrontImages);
+  console.log('firstImage from product card: ', firstImage);
   const price = formatPrice(
     priceRangeV2.minVariantPrice.currencyCode,
     priceRangeV2.minVariantPrice.amount
@@ -31,9 +35,10 @@ export function ProductCard({ product }) {
 
   let storefrontImageData = {}
   let modelImageData = {}
+  
   if (storefrontImages) {
     const storefrontImage = storefrontImages.edges[0].node
-    const modelImage = storefrontImages.edges[3].node
+    const modelImage = storefrontImages.edges[0].node 
     try {
       storefrontImageData = getShopifyImage({
         image: storefrontImage,
@@ -42,7 +47,7 @@ export function ProductCard({ product }) {
         height: 200,
       })
     } catch (e) {
-      console.error(e)
+      
     }
     try {
       modelImageData = getShopifyImage({
@@ -52,7 +57,7 @@ export function ProductCard({ product }) {
         height: 400,
       })
     } catch (e) {
-      console.error(e)
+      
     }
   }
 
@@ -66,6 +71,7 @@ export function ProductCard({ product }) {
       <div className={productImageStyle} data-name="product-image-box">
         <GatsbyImage
           alt={firstImage?.altText ?? title}
+          imgClassName={firstImage ? defaultProductImage : searchProductImage}
           image={firstImage?.gatsbyImageData ?? storefrontImageData}
         />
       </div>
@@ -78,8 +84,8 @@ export function ProductCard({ product }) {
       </div>
       <div className={hoverImage}>
         <GatsbyImage
-          alt={thirdImage?.altText ?? title}
-          image={thirdImage?.gatsbyImageData ?? modelImageData}
+          alt={thirdImage?.altText ?? null}
+          image={thirdImage?.gatsbyImageData ?? null}
         />
       </div>
     </Link>

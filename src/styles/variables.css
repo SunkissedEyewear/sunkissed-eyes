@@ -13,6 +13,8 @@
   --green-80: #088413;
   --green-50-rgb: 55, 182, 53;
   --pink-80: #f8cbd2;
+  --sun-80: #EDBC00;
+  --kiss-80: #FF2F4E;
   --green-50-rgb: 55, 182, 53;
   --white: #ffffff;
 
@@ -77,7 +79,7 @@
   /* role-based tokens */
 
   /* colors */
-  --primary: var(--pink-80);
+  --primary: var(--sun-80);
   --background: var(--white);
   --border: var(--black-fade-5);
 

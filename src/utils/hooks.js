@@ -181,7 +181,7 @@ export function useProductSearch(
     (filters.maxPrice ? 1 : 0)
 
   const isDefault = !filterCount && !filters.term && !sortKey && !after
-
+    console.log("result from useProductSearch Hook", result)
   return { ...result, isDefault, filterCount }
 }
 

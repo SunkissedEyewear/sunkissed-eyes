@@ -4,7 +4,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import { useLocation } from "@reach/router"
 
 export function Seo({
-  title = "SNKSD",
+  title = "Sunkissed",
   description = "Eyewear",
   pathname = "",
   image = "",
@@ -17,26 +17,22 @@ export function Seo({
     query {
       site {
         siteMetadata {
-          siteTitle
           siteTitleDefault
           siteUrl
           hrefLang
           siteDescription
           siteImage
-          twitter
         }
       }
     }
   `)
 
   const {
-    siteTitle,
     siteTitleDefault,
     siteUrl,
     siteDescription,
     siteImage,
     hrefLang,
-    twitter,
   } = siteMetadata
 
   const seo = {
@@ -50,7 +46,7 @@ export function Seo({
     <Helmet
       title={title}
       defaultTitle={siteTitleDefault}
-      titleTemplate={`%s | ${siteTitle}`}
+      titleTemplate={`%s | Eyewear Boutique`}
     >
       <html lang={hrefLang} />
       <meta name="description" content={seo.description} />
@@ -60,12 +56,6 @@ export function Seo({
       <meta property="og:description" content={seo.description} />
       <meta property="og:image" content={seo.image} />
       <meta property="og:type" content="website" />
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={seo.title} />
-      <meta name="twitter:url" content={seo.url} />
-      <meta name="twitter:description" content={seo.description} />
-      <meta name="twitter:image" content={seo.image} />
-      <meta name="twitter:creator" content={twitter} />
       <link rel="preconnect" href="https://fonts.gstatic.com"></link>
       <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet"></link>
       <link

@@ -41,7 +41,7 @@ import {
   modalOpen,
   activeFilters,
   filterWrap,
-} from "./search-page.module.css"
+} from "./search-page.module.scss"
 
 export const query = graphql`
   query {
@@ -69,7 +69,7 @@ export const query = graphql`
           }
           id
           images {
-            gatsbyImageData(aspectRatio: 1, width: 200, layout: FIXED)
+            gatsbyImageData(aspectRatio: 1, layout: CONSTRAINED)
           }
         }
       }
@@ -173,6 +173,7 @@ function SearchPage({
   // If we're using the default filters, use the products from the Gatsby data layer.
   // Otherwise, use the data from search.
   const productList = (isDefault ? products.edges : data?.products?.edges) || []
+  console.log('isDefault: ', isDefault);
 
   return (
     <>
@@ -249,24 +250,28 @@ function SearchPage({
             </p>
           )}
           <ul className={productListStyle}>
-            {productList.map(({ node }) => (
-              <li className={productListItem} key={node.id}>
-                <ProductCard
-                  product={{
-                    title: node.title,
-                    priceRangeV2: node.priceRangeV2,
-                    slug: `/products/${slugify(node.productType)}/${
-                      node.handle
-                    }`,
-                    // The search API and Gatsby data layer have slightly different images available.
-                    images: isDefault ? node.images : [],
-                    storefrontImages: !isDefault && node.images,
-                    vendor: node.vendor,
-                  }}
-                  key={node.id}
-                />
-              </li>
-            ))}
+            {productList.map(({ node }) => {
+              console.log('node images from search page product list: ', node.images);
+
+              return (
+                <li className={productListItem} key={node.id}>
+                  <ProductCard
+                    product={{
+                      title: node.title,
+                      priceRangeV2: node.priceRangeV2,
+                      slug: `/products/${slugify(node.productType)}/${
+                        node.handle
+                      }`,
+                      // The search API and Gatsby data layer have slightly different images available.
+                      images: isDefault ? node.images : [],
+                      storefrontImages: !isDefault && node.images,
+                      vendor: node.vendor,
+                    }}
+                    key={node.id}
+                  />
+                </li>
+              )
+            })}
           </ul>
           {productList?.length && pageCount ? (
             <nav className={pagination} aria-label="pagination">

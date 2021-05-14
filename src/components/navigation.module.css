@@ -20,7 +20,7 @@
 
 .navLink:hover {
   color: var(--text-color);
-  color: rgb(222, 222, 78);
+  color: var(--primary);
 }
 
 .activeLink,
