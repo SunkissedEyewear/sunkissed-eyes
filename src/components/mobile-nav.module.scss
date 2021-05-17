@@ -1,0 +1,40 @@
+.mobileNavStyle {
+  width: 100%;
+  padding: 0 var(--vp-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow-x: auto;
+  white-space: nowrap;
+  font-weight: var(--medium);
+}
+
+.navLink {
+  cursor: pointer;
+  text-decoration: none;
+  height: calc(var(--vp-md) * 1.5);
+  width: 100%;
+  display: flex;
+  color: var(--text-color-secondary);
+  align-items: center;
+  padding: 0 var(--space-lg);
+  border-radius: var(--radius-rounded);
+  &:active,
+  &:hover,
+  &:focus {
+    background-color: var(--black-fade-5);
+  }
+}
+
+// .activeLink,
+// .navLink[aria-active="page"] {
+//   color: var(--primary);
+//   text-decoration: underline;
+//   text-decoration-thickness: 2px;
+//   text-underline-offset: 4px;
+// }
+
+// .activeLink:hover,
+// .navLink[aria-active="page"]:hover {
+//   color: var(--primary);
+// }

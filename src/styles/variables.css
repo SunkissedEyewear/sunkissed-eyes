@@ -7,9 +7,12 @@
     sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   /* palette */
   --black-fade-5: rgba(0, 0, 0, 0.05);
+  --black-fade-20: rgba(0, 0, 0, 0.2);
   --black-fade-40: rgba(0, 0, 0, 0.4);
   --grey-90: #232129;
+  --grey-90: #363636;
   --grey-50: #78757a;
+  --grey-40: #99979b;
   --green-80: #088413;
   --green-50-rgb: 55, 182, 53;
   --pink-80: #f8cbd2;
@@ -38,6 +41,8 @@
   /* radii */
   --radius-sm: 4px;
   --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-xl: 48px;
   --radius-rounded: 999px;
 
   /* spacing */
@@ -48,6 +53,12 @@
   --space-2xl: 24px;
   --space-3xl: 48px;
   --space-4xl: 64px;
+
+  /* viewport-spacing */
+  --vp-sm: 2vh;
+  --vp-md: 5vh;
+  --vp-lg: 9vh;
+  --vp-xl: 13vh;
 
   /* line-height */
   --solid: 1;
@@ -79,7 +90,7 @@
   /* role-based tokens */
 
   /* colors */
-  --primary: var(--sun-80);
+  --primary: var(--pink-80);
   --background: var(--white);
   --border: var(--black-fade-5);
 
@@ -87,7 +98,7 @@
   --transition: box-shadow 0.125s ease-in;
 
   /* shadows */
-  --shadow: 0 4px 12px rgba(var(--green-50-rgb), 0.5);
+  --shadow: 4px 4px 12px var(--black-fade-5);
 
   /* text */
   /* color */
@@ -112,9 +123,19 @@
   --size-gap: 12px;
   --size-gutter-raw: var(--space-2xl);
   --size-gutter: calc(var(--size-gutter-raw) - 12px);
+  --size-icon: var(--space-2xl);
 
   /* product */
   --product-grid: 1fr;
+
+
+  /* breakpoints */
+  --phone: 425px;
+  --phoneLarge: 640px;
+  --tabletSmall: 768px;
+  --tablet: 1024px;
+  --desktop: 1280px;
+  --desktopLarge: 1920px;
 }
 
 /* role-based token adjustments per breakpoint */

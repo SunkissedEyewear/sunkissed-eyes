@@ -1,0 +1,100 @@
+.mobileMenu {
+  z-index: var(--level-one);
+  position: fixed;
+  top: var(--vp-md);
+  left: var(--vp-md);
+  min-height: var(--vp-lg);
+  width: calc(100% - 10vh);
+  background-color: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.menuHeader {
+  height: var(--vp-lg);
+  width: 100%;
+  padding: 0 var(--vp-sm);
+  display: grid;
+  grid-template-columns: 4fr 1fr 1fr;
+  grid-template-areas: "logo cart menu";
+  .logoWrapper {
+  grid-area: logo;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  }
+  .cartWrapper {
+    grid-area: cart;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    svg {
+      height: 30%;
+      width: 30%;
+    }
+    span {
+      width: var(--size-input);
+    }
+    path {
+      fill: var(--text-color);
+    }
+  }
+  .menuButton {
+    grid-area: menu;
+    align-self: center;
+    justify-self: center;
+    height: 50%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-evenly;
+    &.closeButton {
+      background-color: red;
+    }
+    span {
+      background-color: var(--text-color);
+      height: 2px;
+      width: 90%;
+      border-radius: var(--radius-rounded);
+      &:nth-child(1) {
+        width: 55%;
+      }
+      &:nth-child(2) {
+        width: 80%;
+      }
+      &:nth-child(3) {
+        width: 40%;
+      }
+    }
+  }
+}
+
+.menuContent {
+  height: calc(90vh - var(--size-input));
+  width: 100%;
+  border-radius: 0 0  var(--radius-lg) var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  .mobileSocial {
+    background-color: var(--text-color);
+    width: 100%;
+    height: var(--vp-xl);
+    border-radius: 0 var(--radius-xl) var(--radius-lg) var(--radius-lg);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    path {
+      fill: var(--white);
+    }
+  }
+}

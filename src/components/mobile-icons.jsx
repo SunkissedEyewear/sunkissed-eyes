@@ -1,28 +1,18 @@
 import * as React from "react"
 import { Link } from "gatsby"
 import { StoreContext } from "../context/store-context"
-import Logo from "../icons/logo"
-import { Navigation } from "./navigation"
 import { CartButton } from "./cart-button"
 import SearchIcon from "../icons/search"
 import WishlistIcon from "../icons/wishlist"
-import SocialLinks from './social-links'
-// import FacebookIcon from "../icons/facebook"
-// import InstagramIcon from "../icons/instagram"
-// import PinterestIcon from "../icons/pinterest"
+import AccountIcon from '../icons/account'
 import { Toast } from "./toast"
 import {
-  navRight,
-  logo as logoCss,
-  navRightButton,
-  nav,
+  mobileIcons,
+  mobileIcon,
   internal,
-  social,
-  account,
-  rotateWrapper
-} from "./nav-right.module.scss"
+} from "./mobile-icons.module.scss"
 
-export function NavRight() {
+export function MobileIcons({ toggleMenu }) {
   const { checkout, loading, didJustAddToCart } = React.useContext(StoreContext)
 
   const items = checkout ? checkout.lineItems : []
@@ -32,9 +22,9 @@ export function NavRight() {
   }, 0)
 
   return (
-    <div className={navRight}>
-      <div className={internal}>
-        <Link to="/search" className={navRightButton}>
+    <div className={mobileIcons}>
+      <div className={internal} onClick={toggleMenu} >
+        <Link to="/search" className={mobileIcon}>
           <SearchIcon />
         </Link>
         <CartButton quantity={quantity} />
@@ -45,8 +35,6 @@ export function NavRight() {
             <>
               Added to cart{" "}
               <svg
-                width="14"
-                height="14"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -66,14 +54,13 @@ export function NavRight() {
             </>
           )}
         </Toast>
-        <div className={account}>
-          <div className={rotateWrapper}>account</div>
+        <div className={mobileIcon}>
+          <AccountIcon />
         </div>
-        <Link to="/search" className={navRightButton}>
+        <Link to="/search" className={mobileIcon}>
           <WishlistIcon />
         </Link>
       </div>
-      <SocialLinks />
     </div>
   )
 }

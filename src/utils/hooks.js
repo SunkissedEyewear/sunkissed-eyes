@@ -181,7 +181,7 @@ export function useProductSearch(
     (filters.maxPrice ? 1 : 0)
 
   const isDefault = !filterCount && !filters.term && !sortKey && !after
-    console.log("result from useProductSearch Hook", result)
+    
   return { ...result, isDefault, filterCount }
 }
 
@@ -193,7 +193,7 @@ const defaultState = {
 }
 
 function reducer(state, action) {
-  console.log({ action, state })
+  
   const { pages, cursor } = state
   switch (action.type) {
     case "next": {
@@ -253,6 +253,7 @@ function reducer(state, action) {
       throw new Error(action.type)
   }
 }
+
 
 export function useSearchPagination() {
   const [state, dispatch] = useReducer(reducer, defaultState)

@@ -1,12 +1,25 @@
 .layout {
   position: fixed;
   display: grid;
-  min-height: 100vh;
+  height: 100vh;
   grid-template-rows: 100%;
   grid-template-columns: 19vw 67vw 14vw;
   grid-template-areas: "lNav content rNav";
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+    grid-template-areas: "content";
+    padding: 0 var(--vp-md);
+  }
 }
 
 .scrollWrap {
   grid-area: content;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none !important;
+  }
+  @media (max-width: 1024px) {
+    padding-top: calc(var(--vp-md) + var(--vp-xl));
+  }
 }
+
