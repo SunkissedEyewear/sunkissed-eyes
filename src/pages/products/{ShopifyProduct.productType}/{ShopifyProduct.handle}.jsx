@@ -155,12 +155,6 @@ export default function Product({ data: { product, suggestions } }) {
                     <span className={noImagePreview}>No Preview image</span>
                   )}
                 </div>
-                {hasMultipleImages && (
-                  <div className={scrollForMore}>
-                    <span aria-hidden="true">←</span> scroll for more{" "}
-                    <span aria-hidden="true">→</span>
-                  </div>
-                )}
               </div>
             )}
 
@@ -204,18 +198,6 @@ export default function Product({ data: { product, suggestions } }) {
                               handleOptionChange(index, event)
                             }
                           />
-                          {/* <select
-                        aria-label="Variants"
-                        onBlur={(event) => handleOptionChange(index, event)}
-                        key={id}
-                      >
-                        <option value="">{`Select ${name}`}</option>
-                        {values.map((value) => (
-                          <option value={value} key={`${name}-${value}`}>
-                            {value}
-                          </option>
-                        ))}
-                      </select> */}
                         </div>
                       )
                     })}
