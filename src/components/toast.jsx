@@ -1,5 +1,5 @@
 import * as React from "react"
-import { toastWrapper, hiding, showing } from "./toast.module.css"
+import { toastWrapper, hiding, showing } from "./toast.module.scss"
 
 export function Toast({ show, duration = 1000, className, ...props }) {
   const [visible, setVisible] = React.useState(show)

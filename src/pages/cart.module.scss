@@ -105,7 +105,7 @@
 }
 
 .imageHeader {
-  position: fixed;
+  // position: fixed;
   width: 0;
   height: 0;
   overflow: hidden;
@@ -120,6 +120,9 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+  @media (max-width: 1024px) {
+    padding: 0 var(--vp-md);
+  }
 }
 
 .emptyStateHeading {

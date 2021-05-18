@@ -13,7 +13,9 @@ import {
   productBox,
   container,
   header,
+  imageScrollWrapper,
   productImageWrapper,
+  productImageList,
   scrollForMore,
   noImagePreview,
   optionsWrapper,
@@ -27,6 +29,8 @@ import {
   metaSection,
   productDetails,
   productDescription,
+  headerContainer,
+  colorsContainer,
 } from "./product-page.module.scss"
 
 export default function Product({ data: { product, suggestions } }) {
@@ -43,6 +47,8 @@ export default function Product({ data: { product, suggestions } }) {
     images: [firstImage],
   } = product
   const { client } = React.useContext(StoreContext)
+
+  console.log("product from single product page", product);
 
   const [variant, setVariant] = React.useState({ ...initialVariant })
   const [quantity, setQuantity] = React.useState(1)
@@ -124,12 +130,13 @@ export default function Product({ data: { product, suggestions } }) {
                 data-scroll-section
               >
                 <div
+                  className={imageScrollWrapper}
                   role="group"
                   aria-label="gallery"
                   aria-describedby="instructions"
                 >
                   {hasImages ? (
-                    <ul>
+                    <ul className={productImageList}>
                       {images.map((image, index) => (
                         <li key={`product-image-${index}`}>
                           <GatsbyImage
@@ -162,38 +169,42 @@ export default function Product({ data: { product, suggestions } }) {
                 <Link to={product.productTypeSlug}>{product.productType}</Link>
                 <ChevronIcon size={12} />
               </div> */}
-              <h1 className={header}>{title}</h1>
+              <div className={headerContainer}>
+                <h1 className={header}>{title}</h1>
+                <h2 className={priceValue}>
+                  <span>{price}</span>
+                </h2>
+              </div>
+              <div className={colorsContainer}>
+                <h4>colors</h4>
+                <fieldset className={optionsWrapper}>
+                  {hasVariants &&
+                    options[0].values.map((value, index) => {
+                      const colors = [
+                        "#272727",
+                        "#4f88bb",
+                        "#B69900",
+                        "#C4C4C4",
+                        "#cc7b8a5",
+                      ]
 
-              <h2 className={priceValue}>
-                <span>{price}</span>
-              </h2>
-              <h4>colors</h4>
-              <fieldset className={optionsWrapper}>
-                {hasVariants &&
-                  options[0].values.map((value, index) => {
-                    const colors = [
-                      "#272727",
-                      "#4f88bb",
-                      "#B69900",
-                      "#C4C4C4",
-                      "#cc7b8a5",
-                    ]
-
-                    return (
-                      <div className={selectVariant}>
-                        <div
-                          class={colorOption}
-                          id={value}
-                          style={{
-                            background: colors[index],
-                            border: `2px solid ${colors[index]}`,
-                          }}
-                          type="radio"
-                          name="options"
-                          value={value}
-                          onClick={(event) => handleOptionChange(index, event)}
-                        />
-                        {/* <select
+                      return (
+                        <div className={selectVariant}>
+                          <div
+                            class={colorOption}
+                            id={value}
+                            style={{
+                              background: colors[index],
+                              border: `2px solid ${colors[index]}`,
+                            }}
+                            type="radio"
+                            name="options"
+                            value={value}
+                            onClick={(event) =>
+                              handleOptionChange(index, event)
+                            }
+                          />
+                          {/* <select
                         aria-label="Variants"
                         onBlur={(event) => handleOptionChange(index, event)}
                         key={id}
@@ -205,28 +216,17 @@ export default function Product({ data: { product, suggestions } }) {
                           </option>
                         ))}
                       </select> */}
-                      </div>
-                    )
-                  })}
-              </fieldset>
-              <div className={addToCartStyle}>
-                <NumericInput
-                  aria-label="Quantity"
-                  onIncrement={() => setQuantity((q) => Math.min(q + 1, 20))}
-                  onDecrement={() => setQuantity((q) => Math.max(1, q - 1))}
-                  onChange={(event) => setQuantity(event.currentTarget.value)}
-                  value={quantity}
-                  min="1"
-                  max="20"
-                />
-                <AddToCart
-                  variantId={productVariant.storefrontId}
-                  quantity={quantity}
-                  available={available}
-                />
+                        </div>
+                      )
+                    })}
+                </fieldset>
               </div>
               <div className={metaSection}>
-                <span className={labelFont}>Type</span>
+                <span>+ stainless steel frame</span>
+                <span>+ antiglare lens</span>
+                <span></span>
+                {product.description}
+                {/* <span className={labelFont}>Type</span>
                 <span className={tagList}>
                   <Link to={product.productTypeSlug}>
                     {product.productType}
@@ -238,7 +238,14 @@ export default function Product({ data: { product, suggestions } }) {
                   {product.tags.map((tag) => (
                     <Link to={`/search?t=${tag}`}>{tag}</Link>
                   ))}
-                </span>
+                </span> */}
+              </div>
+              <div className={addToCartStyle}>
+                <AddToCart
+                  variantId={productVariant.storefrontId}
+                  quantity={quantity}
+                  available={available}
+                />
               </div>
             </div>
           </div>

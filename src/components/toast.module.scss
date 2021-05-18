@@ -1,10 +1,10 @@
 .toastWrapper {
-  background-color: var(--primary);
+  background-color: var(--text-color);
   color: var(--text-color-inverted);
   width: max-content;
   position: absolute;
-  right: var(--space-xl);
-  bottom: 0;
+  right: var(--vp-sm);
+  bottom: var(--vp-sm);
   padding: var(--space-md) var(--space-lg);
   font-size: var(--text-xs);
   font-weight: var(--semibold);
@@ -17,6 +17,11 @@
   justify-content: center;
   z-index: 10;
   white-space: nowrap;
+  @media (max-width: 1024px) {
+    position: fixed;
+    bottom: unset;
+    top: calc(100vh - var(--vp-lg));
+  }
 }
 
 @keyframes showing {

@@ -3,4 +3,7 @@
   grid-template-columns: var(--product-grid);
   place-items: center;
   gap: var(--size-gutter-raw) 0;
+  @media (max-width: 1024px) {
+    padding: 0 var(--vp-md);
+  }
 }

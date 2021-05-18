@@ -1,6 +1,6 @@
 import * as React from "react"
 import { ProductCard } from "./product-card"
-import { listingContainerStyle } from "./product-listing.module.css"
+import { listingContainerStyle } from "./product-listing.module.scss"
 
 export function ProductListing({ products }) {
   console.log('products: ', products);

@@ -1,15 +1,16 @@
 .addToCart {
+  min-width: 200px;
+  align-self: flex-end;
+  padding: var(--space-lg) var(--space-xl);
   display: flex;
   flex-direction: row;
-  color: var(--text-color-inverted);
-  background-color: var(--primary);
-  align-self: flex-end;
-  padding: var(--space-sm) var(--space-xl);
-  border-radius: var(--radius-md);
-  font-weight: var(--bold);
   align-items: center;
-  height: var(--size-input);
   justify-content: center;
+  background-color: var(--text-color);
+  color: var(--text-color-inverted);
+  text-transform: lowercase;
+  letter-spacing: var(--even);
+  font-weight: var(--bold);
   transition: var(--transition);
 }
 

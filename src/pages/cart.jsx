@@ -19,7 +19,7 @@ import {
   emptyStateHeading,
   emptyStateLink,
   title,
-} from "./cart.module.css"
+} from "./cart.module.scss"
 
 export default function CartPage() {
   const { checkout, loading } = React.useContext(StoreContext)

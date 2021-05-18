@@ -68,6 +68,7 @@
 
   /* letter-spacing */
   --loose: 0.25em;
+  --even: 0.1em;
   --tracked: 0.075em;
   --tight: -0.015em;
 
