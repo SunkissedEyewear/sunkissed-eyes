@@ -10,7 +10,7 @@ import {
   closeButton,
   logoWrapper,
   cartWrapper,
-} from "./mobile-menu.module.scss"
+} from "./parent-mobile-menu.module.scss"
 import Logo from "../icons/logo"
 import { Toast } from "./toast"
 import { CartButton } from "./cart-button"

@@ -2,10 +2,11 @@
   display: inline-grid;
   grid-template-columns: 1fr min-content;
   grid-template-areas: "input increment" "input decrement";
-  background-color: var(--input-background);
-  border-radius: var(--radius-md);
   height: var(--size-input);
   overflow: hidden;
+  @media (max-width: 1024px) {
+     transform: scale(.75);
+  }
 }
 
 .wrap button span {
@@ -24,6 +25,9 @@
   border-width: 0 1px 0 0;
   font-weight: var(--medium);
   color: var(--input-text);
+  @media (max-width: 1024px) {
+    // width: var(--space-lg);
+  }
 }
 
 .input:disabled {
@@ -37,6 +41,9 @@
   display: grid;
   place-items: center;
   color: var(--input-ui);
+  @media (max-width: 1024px) {
+    padding: 0;
+  }
 }
 
 .wrap button:hover {

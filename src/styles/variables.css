@@ -13,6 +13,7 @@
   --grey-90: #363636;
   --grey-50: #78757a;
   --grey-40: #99979b;
+  --grey-10: hsl(270, 2%, 90%);
   --green-80: #088413;
   --green-50-rgb: 55, 182, 53;
   --pink-80: #f8cbd2;
@@ -55,7 +56,7 @@
   --space-4xl: 64px;
 
   /* viewport-spacing */
-  --vp-sm: 2vh;
+  --vp-sm: 2.5vh;
   --vp-md: 5vh;
   --vp-lg: 9vh;
   --vp-xl: 13vh;
@@ -68,7 +69,7 @@
 
   /* letter-spacing */
   --loose: 0.25em;
-  --even: 0.1em;
+  --even: 0.15em;
   --tracked: 0.075em;
   --tight: -0.015em;
 

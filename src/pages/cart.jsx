@@ -11,6 +11,7 @@ import {
   grandTotal,
   summary,
   checkoutButton,
+  checkoutButtonWrapper,
   collapseColumn,
   labelColumn,
   imageHeader,
@@ -106,13 +107,15 @@ export default function CartPage() {
                 </tr>
               </tbody>
             </table>
-            <button
-              onClick={handleCheckout}
-              disabled={loading}
-              className={checkoutButton}
-            >
-              Checkout
-            </button>
+            <div className={checkoutButtonWrapper}>
+              <button
+                onClick={handleCheckout}
+                disabled={loading}
+                className={checkoutButton}
+              >
+                Checkout
+              </button>
+            </div>
           </>
         )}
       </main>

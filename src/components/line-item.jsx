@@ -12,7 +12,7 @@ import {
   variant,
   totals,
   priceColumn,
-} from "./line-item.module.css"
+} from "./line-item.module.scss"
 
 export function LineItem({ item }) {
   const {

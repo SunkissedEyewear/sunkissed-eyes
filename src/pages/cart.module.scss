@@ -13,6 +13,9 @@
   display: grid;
   grid-template-columns: 48px 1fr min-content;
   gap: var(--space-md) var(--space-2xl);
+  @media (max-width: 1024px) {
+    max-width: 100vw;
+  }
 }
 
 .table th {
@@ -38,33 +41,45 @@
 .totals,
 .table th.totals {
   text-align: right;
+  @media (max-width: 1024px) {
+    text-align: left;
+    margin-left: var(--vp-md);
+  }
 }
 
 .summary {
   font-weight: var(--semibold);
   font-size: var(--text-lg);
-}
+}  
 
 .grandTotal {
   font-size: var(--text-2xl);
   font-weight: var(--semibold);
 }
 
-.checkoutButton {
-  align-items: center;
-  background: var(--primary);
-  border-radius: var(--radius-md);
-  color: var(--text-color-inverted);
+.checkoutButtonWrapper {
   display: flex;
+  justify-content: flex-end;
+  margin: var(--size-gutter) 0;
+}
+
+.checkoutButton {
+  background: var(--text-color);
+  width: 50%;
+  height: var(--size-input);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color-inverted);
   font-size: var(--text-md);
   font-weight: var(--semibold);
-  height: var(--size-input);
-  justify-content: center;
   line-height: var(--solid);
-  margin: var(--space-3xl) auto var(--space-md);
-  padding: var(--space-sm) var(--space-xl);
-  width: max-content;
+  letter-spacing: var(--even);
+  text-transform: lowercase;
   transition: var(--transition);
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
 }
 
 .checkoutButton:hover {

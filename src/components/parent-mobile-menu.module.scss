@@ -1,10 +1,10 @@
 .mobileMenu {
   z-index: var(--level-one);
   position: fixed;
-  top: var(--vp-md);
-  left: var(--vp-md);
+  top: var(--vp-sm);
+  left: var(--vp-sm);
   min-height: var(--vp-lg);
-  width: calc(100% - 10vh);
+  width: calc(100% - 5vh);
   background-color: var(--white);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow);
@@ -22,10 +22,10 @@
   grid-template-columns: 4fr 1fr 1fr;
   grid-template-areas: "logo cart menu";
   .logoWrapper {
-  grid-area: logo;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    grid-area: logo;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
   }
   .cartWrapper {
     grid-area: cart;
@@ -64,12 +64,15 @@
       width: 90%;
       border-radius: var(--radius-rounded);
       &:nth-child(1) {
+        max-width: 30px;
         width: 55%;
       }
       &:nth-child(2) {
+        max-width: 45px;
         width: 80%;
       }
       &:nth-child(3) {
+        max-width: 25px;
         width: 40%;
       }
     }
