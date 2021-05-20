@@ -1,16 +1,22 @@
 import * as React from "react"
 import { Link } from "gatsby"
+
+// user info
+import { useAuth0 } from "@auth0/auth0-react"
+
+// store context
 import { StoreContext } from "../context/store-context"
+
+// components
 import Logo from "../icons/logo"
 import { Navigation } from "./navigation"
 import { CartButton } from "./cart-button"
 import SearchIcon from "../icons/search"
 import WishlistIcon from "../icons/wishlist"
-import SocialLinks from './social-links'
-// import FacebookIcon from "../icons/facebook"
-// import InstagramIcon from "../icons/instagram"
-// import PinterestIcon from "../icons/pinterest"
+import SocialLinks from "./social-links"
 import { Toast } from "./toast"
+
+// styles
 import {
   navRight,
   logo as logoCss,
@@ -19,7 +25,7 @@ import {
   internal,
   social,
   account,
-  rotateWrapper
+  rotateWrapper,
 } from "./nav-right.module.scss"
 
 export function NavRight() {
@@ -30,6 +36,8 @@ export function NavRight() {
   const quantity = items.reduce((total, item) => {
     return total + item.quantity
   }, 0)
+
+  const { user, isAuthenticated, loginWithRedirect, isLoading } = useAuth0()
 
   return (
     <div className={navRight}>
@@ -66,10 +74,16 @@ export function NavRight() {
             </>
           )}
         </Toast>
-        <div className={account}>
-          <div className={rotateWrapper}>account</div>
-        </div>
-        <Link to="/search" className={navRightButton}>
+        <Link to="/account" className={account}>
+          <div className={rotateWrapper}>
+            { isLoading 
+              ? " " 
+              : (isAuthenticated  
+                ? "account" 
+                : "login")}
+          </div>
+        </Link>
+        <Link to="/wishlist" className={navRightButton}>
           <WishlistIcon />
         </Link>
       </div>

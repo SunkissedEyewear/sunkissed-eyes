@@ -90,7 +90,7 @@
 
 .results {
   grid-area: results;
-  padding: 0 var(--space-2xl);
+  padding: var(--space-2xl);
 }
 
 .results ul {
@@ -471,6 +471,10 @@
   font-style: italic;
   text-transform: lowercase;
   color: var(--black-fade-40);
+  @media (max-width: 1024px) {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 .resultsStyle span {
