@@ -230,6 +230,11 @@
   }
 }
 
+.currOption {
+  font-weight: var(--light);
+  text-transform: lowercase;
+}
+
 .optionsWrapper {
   display: flex;
   align-items: center;
@@ -238,12 +243,23 @@
   // padding-bottom: var(--space-lg);
 }
 
-
-
 .colorOption {
+  position: relative;
   content: "";
   height: var(--text-md);
   width: var(--text-md);
+  border-radius: var(--radius-rounded);
+}
+
+.activeColorOption {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 220%;
+  width: 220%;
+  background-color: transparent;
+  border: 2px solid var(--black-fade-20);
   border-radius: var(--radius-rounded);
 }
 

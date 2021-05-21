@@ -20,6 +20,8 @@ import {
   noImagePreview,
   optionsWrapper,
   colorOption,
+  currOption,
+  activeColorOption,
   priceValue,
   selectVariant,
   labelFont,
@@ -48,7 +50,7 @@ export default function Product({ data: { product, suggestions } }) {
   } = product
   const { client } = React.useContext(StoreContext)
 
-  console.log("product from single product page", product);
+  
 
   const [variant, setVariant] = React.useState({ ...initialVariant })
   const [quantity, setQuantity] = React.useState(1)
@@ -76,8 +78,9 @@ export default function Product({ data: { product, suggestions } }) {
     [productVariant.storefrontId, client.product]
   )
 
-  const handleOptionChange = (index, event) => {
-    const value = event.target.value
+  const handleOptionChange = (index, value) => {
+  // const handleOptionChange = (index, event) => {
+    // const value = event.target.value
     
     
 
@@ -86,7 +89,6 @@ export default function Product({ data: { product, suggestions } }) {
     }
 
     const currentOptions = [...variant.selectedOptions]
-    
 
     currentOptions[index] = {
       ...currentOptions[index],
@@ -96,7 +98,8 @@ export default function Product({ data: { product, suggestions } }) {
     const selectedVariant = variants.find((variant) => {
       return isEqual(currentOptions, variant.selectedOptions)
     })
-
+    
+    console.log("selectedVariant: ", selectedVariant)
     setVariant({ ...selectedVariant })
   }
 
@@ -182,6 +185,9 @@ export default function Product({ data: { product, suggestions } }) {
                         "#cc7b8a5",
                       ]
 
+                      const activeSelection = value === variant.title ? activeColorOption : ''
+                      console.log('activeSelection: ', activeSelection);
+
                       return (
                         <div className={selectVariant}>
                           <div
@@ -191,17 +197,22 @@ export default function Product({ data: { product, suggestions } }) {
                               background: colors[index],
                               border: `2px solid ${colors[index]}`,
                             }}
-                            type="radio"
+                            // type="radio"
                             name="options"
                             value={value}
-                            onClick={(event) =>
-                              handleOptionChange(index, event)
-                            }
-                          />
+                            onClick={(event) => {
+                              const val = event.target.getAttribute("value")
+
+                              handleOptionChange(0, val)
+                            }}
+                          >
+                            <span className={activeSelection}></span>
+                          </div>
                         </div>
                       )
                     })}
                 </fieldset>
+                <p className={currOption}>{variant.title}</p>
               </div>
               <div className={metaSection}>
                 <span>+ stainless steel frame</span>
