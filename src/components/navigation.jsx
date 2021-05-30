@@ -18,7 +18,7 @@ export function Navigation({ className }) {
     <nav className={navStyle}>
       {/* <nav className={[navStyle, className].join(" ")}> */}
       <Link
-        key="All"
+        key="shop"
         className={navLink}
         to="/products/"
         activeClassName={activeLink}
@@ -26,18 +26,16 @@ export function Navigation({ className }) {
         shop
       </Link>
       <Link
-        key="All"
+        key="collections"
         className={navLink}
         to="/products/"
-        activeClassName={activeLink}
       >
         collections
       </Link>
       <Link
-        key="All"
+        key="insta"
         className={navLink}
         to="/products/"
-        activeClassName={activeLink}
       >
         shop insta
       </Link>
@@ -46,32 +44,28 @@ export function Navigation({ className }) {
           key={name}
           className={navLink}
           to={`/products/${slugify(name)}`}
-          activeClassName={activeLink}
         >
           {name}
         </Link>
       ))}
       <Link
-        key="All"
+        key="blog"
         className={navLink}
         to="/products/"
-        activeClassName={activeLink}
       >
         blog
       </Link>
       <Link
-        key="All"
+        key="face"
         className={navLink}
         to="/products/"
-        activeClassName={activeLink}
       >
         face shapes
       </Link>
       <Link
-        key="All"
+        key="contact"
         className={navLink}
         to="/products/"
-        activeClassName={activeLink}
       >
         contact
       </Link>

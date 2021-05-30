@@ -36,6 +36,7 @@
 
 .navRightButton:hover {
   color: var(--text-color);
+
 }
 
 .navRightButton[aria-current="page"] {
@@ -46,7 +47,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: calc(var(--size-input) / 1.8);
+  margin: calc(var(--size-input) / 4);
+  font-weight: var(--bold);
 }
 
 .rotateWrapper {

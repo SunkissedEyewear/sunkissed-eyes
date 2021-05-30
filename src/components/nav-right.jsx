@@ -1,8 +1,8 @@
 import * as React from "react"
 import { Link } from "gatsby"
-
-// user info
+import { ApolloClient, InMemoryCache, gql, useMutation, useQuery } from "@apollo/client"
 import { useAuth0 } from "@auth0/auth0-react"
+
 
 // store context
 import { StoreContext } from "../context/store-context"
@@ -28,6 +28,28 @@ import {
   rotateWrapper,
 } from "./nav-right.module.scss"
 
+const client = new ApolloClient({
+  uri: "https://sunkissed-heroku-db.herokuapp.com/v1/graphql",
+  cache: new InMemoryCache(),
+})
+
+const ADD_CUSTOMER = gql`
+  mutation MyMutation($email: String = "", $fl_name: String = "") {
+    insert_Customers_one(object: { email: $email, fl_name: $fl_name }) {
+      fl_name
+    }
+  }
+`
+
+const CUSTOMER_QUERY = gql`
+  query MyQuery($_email: String = "") {
+    Customers(where: { email: { _eq: $_email } }) {
+      wishlist
+      fl_name
+    }
+  }
+`
+
 export function NavRight() {
   const { checkout, loading, didJustAddToCart } = React.useContext(StoreContext)
 
@@ -37,7 +59,41 @@ export function NavRight() {
     return total + item.quantity
   }, 0)
 
-  const { user, isAuthenticated, loginWithRedirect, isLoading } = useAuth0()
+  const {
+    user,
+    isAuthenticated,
+    logout,
+    loginWithRedirect,
+    loginWithPopup,
+    isLoading,
+  } = useAuth0()
+
+  const authZeroStuff = useAuth0()
+  // 
+
+  // get function to add customer
+  const [addCustomer, { data: mutationData }] = useMutation(ADD_CUSTOMER)
+  // 
+
+  // get customer data to check against existing user
+  const { loading: customerLoading, error, data: customerData, refetch } = useQuery(CUSTOMER_QUERY, {
+    variables: { _email: user?.email},
+  })
+  
+  const createCustomer = (userEmail, userName) => {
+    addCustomer({ variables: { email: userEmail, fl_name: userName }})
+  }
+
+  React.useEffect(() => {
+    if (isAuthenticated && user.email && !customerLoading) {
+      refetch({ variables: { _email: user.email } })
+      const isNewCustomer = customerData.Customers.length === 0 
+      if (isNewCustomer && !isLoading) {
+        createCustomer(user.email, user.name)
+      }
+    }
+  }, [isAuthenticated, isLoading, customerData, customerLoading])
+  
 
   return (
     <div className={navRight}>
@@ -74,18 +130,30 @@ export function NavRight() {
             </>
           )}
         </Toast>
-        <Link to="/account" className={account}>
-          <div className={rotateWrapper}>
-            { isLoading 
-              ? " " 
-              : (isAuthenticated  
-                ? "account" 
-                : "login")}
-          </div>
-        </Link>
         <Link to="/wishlist" className={navRightButton}>
           <WishlistIcon />
         </Link>
+        <div className={account}>
+          <div className={rotateWrapper}>
+            {isLoading ? (
+              " "
+            ) : isAuthenticated ? (
+              <span
+                className={navRightButton}
+                onClick={() => logout({ returnTo: "http://localhost:8000" })}
+              >
+                logout
+              </span>
+            ) : (
+              <span
+                className={navRightButton}
+                onClick={() => loginWithPopup()}
+              >
+                login
+              </span>
+            )}
+          </div>
+        </div>
       </div>
       <SocialLinks />
     </div>

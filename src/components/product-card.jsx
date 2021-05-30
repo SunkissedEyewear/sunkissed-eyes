@@ -26,8 +26,8 @@ export function ProductCard({ product }) {
     storefrontImages,
   } = product
   
-  console.log('storefrontImages from product card: ', storefrontImages);
-  console.log('firstImage from product card: ', firstImage);
+  
+  
   const price = formatPrice(
     priceRangeV2.minVariantPrice.currencyCode,
     priceRangeV2.minVariantPrice.amount

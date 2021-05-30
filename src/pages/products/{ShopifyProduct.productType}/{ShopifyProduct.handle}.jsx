@@ -99,7 +99,7 @@ export default function Product({ data: { product, suggestions } }) {
       return isEqual(currentOptions, variant.selectedOptions)
     })
     
-    console.log("selectedVariant: ", selectedVariant)
+    
     setVariant({ ...selectedVariant })
   }
 
@@ -186,7 +186,7 @@ export default function Product({ data: { product, suggestions } }) {
                       ]
 
                       const activeSelection = value === variant.title ? activeColorOption : ''
-                      console.log('activeSelection: ', activeSelection);
+                      
 
                       return (
                         <div className={selectVariant}>

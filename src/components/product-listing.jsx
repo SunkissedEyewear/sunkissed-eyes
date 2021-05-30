@@ -3,8 +3,6 @@ import { ProductCard } from "./product-card"
 import { listingContainerStyle } from "./product-listing.module.scss"
 
 export function ProductListing({ products }) {
-  console.log('products: ', products);
-  
   
   return (
     <div className={listingContainerStyle}>

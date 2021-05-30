@@ -1,5 +1,5 @@
 require("dotenv").config()
-
+  
 module.exports = {
   siteMetadata: {
     siteTitle: "gatsby-starter-shopify",
