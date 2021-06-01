@@ -48,25 +48,23 @@ export default function Layout({ children }) {
   }, [isMobile])
 
   return (
-    <div className={layout}>
-      <Seo />
-      <SkipNavLink />
-      {!isMobile ? (
-        <NavLeft />
-      ) : (
-        <MobileMenu
-          toggleMenu={() => setMenuOpen(!menuOpen)}
-          menuOpen={menuOpen}
-        />
-      )}
-      <div className={scrollWrap} data-scroll-container ref={containerRef}>
-        <main>{children}</main>
+    <ApolloProvider client={client}>
+      <div className={layout}>
+        <Seo />
+        <SkipNavLink />
+        {!isMobile ? (
+          <NavLeft />
+        ) : (
+          <MobileMenu
+            toggleMenu={() => setMenuOpen(!menuOpen)}
+            menuOpen={menuOpen}
+          />
+        )}
+        <div className={scrollWrap} data-scroll-container ref={containerRef}>
+          <main>{children}</main>
+        </div>
+        {!isMobile && <NavRight />}
       </div>
-      {!isMobile && (
-        <ApolloProvider client={client}>
-          <NavRight />
-        </ApolloProvider>
-      )}
-    </div>
+    </ApolloProvider>
   )
 }

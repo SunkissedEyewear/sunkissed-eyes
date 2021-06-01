@@ -89,7 +89,10 @@ export function NavRight() {
       refetch({ variables: { _email: user.email } })
       const isNewCustomer = customerData.Customers.length === 0 
       if (isNewCustomer && !isLoading) {
+        
         createCustomer(user.email, user.name)
+      } else {
+        
       }
     }
   }, [isAuthenticated, isLoading, customerData, customerLoading])

@@ -118,6 +118,7 @@
 }
 
 .headerContainer {
+  min-width: 80%;
   @media (max-width: 1024px) {
     background-color: var(--black-fade-5);
     display: flex;
@@ -167,19 +168,43 @@
   font-size: var(--text-lg);
 }
 
-.priceValue > span {
+.subHeader > span {
   font-size: var(--text-display);
   font-weight: var(--light);
   line-height: var(--dense);
   color: var(--text-color-secondary);
 }
 
-.priceValue {
+.subHeader {
   padding: var(--space-lg) 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 80%;
   @media (max-width: 1024px) {
     padding: 0;
   }
 }
+
+.heart {
+  cursor: pointer;
+  &.filled {
+    path {
+      &:nth-child(2) {
+        fill: lightpink;
+        opacity: .5;
+      }
+    }
+  }
+  &.empty {
+    path {
+      &:nth-child(2) {
+        fill: transparent
+      }
+    }
+  }
+}
+
 
 .visuallyHidden {
   position: absolute;
