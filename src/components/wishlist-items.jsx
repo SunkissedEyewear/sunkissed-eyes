@@ -5,7 +5,7 @@ import WishlistItem from "./wl-item"
 
 import { wishlistContainer } from "./wishlist-items.module.scss"
 
-const WishlistItems = ({ wishlist }) => {
+const WishlistItems = ({ wishlist, updateWishlist }) => {
   
   const {
     allShopifyProductVariant: { edges },
@@ -20,7 +20,7 @@ const WishlistItems = ({ wishlist }) => {
             price
             product {
               images {
-                gatsbyImageData
+                gatsbyImageData(layout: CONSTRAINED, width: 300 )
               }
             }
           }
@@ -34,7 +34,7 @@ const WishlistItems = ({ wishlist }) => {
   return (
     <div className={wishlistContainer}>
       {userWishlist.map((item) => (
-        <WishlistItem itemData={item.node} />
+        <WishlistItem itemData={item.node} updateWishlist={updateWishlist}/>
       ))}
     </div>
   )

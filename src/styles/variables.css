@@ -101,6 +101,7 @@
   /* transitions */
   --transition: box-shadow 0.125s ease-in;
   --transition-std: all 1s ease-in-out;
+  --transition-2: all .4s ease-in-out;
 
   /* shadows */
   --shadow: 4px 4px 12px var(--black-fade-5);

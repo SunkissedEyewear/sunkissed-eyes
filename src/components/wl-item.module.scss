@@ -1,0 +1,60 @@
+.wlItem {
+  max-width: 400px;
+  max-height: 50vh;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  padding: calc(var(--size-gutter-raw) / 1);
+  margin-bottom: var(--size-gutter-raw);
+  &:hover {
+    .removeBtn {
+      opacity: 1;
+    }
+  }
+}
+
+.removeBtn {
+  opacity: 0;
+  justify-self: flex-end;
+  display: flex;
+  align-items: center;
+  letter-spacing: var(--tracked);
+  color: var(--grey-40);
+  margin-left: auto;
+  transition: var(--transition-2);
+  span {
+    font-size: var(--text-3xl);
+  }
+}
+
+.imageWrapper {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  aspect-ratio: 1;
+}
+
+.nameAndPrice {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.itemName {
+  font-size: var(--text-md);
+  font-weight: var(--bold);
+}
+.itemPrice {
+  // font-weight: var(--light);
+}
+
+.variantName {
+  margin-top: var(--space-sm);
+  color: var(--grey-40);
+  text-transform: lowercase;
+}

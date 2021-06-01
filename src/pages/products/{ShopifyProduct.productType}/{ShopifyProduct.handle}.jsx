@@ -187,22 +187,23 @@ export default function Product({ data: { product, suggestions } }) {
   ]
 
   const fakeFilteredList = `"{${fakeWishlist.map(i => i)}}"`
-  const addRemoveFromWishlist = (params) => {
+  const addRemoveFromWishlist = () => {
     //   + if in list, useMutation to remove from list
     const dbWishlist =
       customerData !== undefined ? customerData.Customers[0].wishlist : null
 
-    // [ "item1", "745e7f79-618e-579c-bcf8-540ceb04a866", "669b81d7-989d-5f87-9179-310e011d5697" ]
-
     if (dbWishlist.includes(variant.id) && isAuthenticated) {
+      console.log('variant.id from item page remove fn: ', variant.id);
       if (customerLoading) {
         return
       }
-      const filteredWishlist = dbWishlist.filter((item) => item !== variant.id)
+      const itemRemovedWishlist = dbWishlist.filter((wli) => wli !== variant.id)
+      const testVar = `{${itemRemovedWishlist.map((wli) => `${wli} ` )}}`
+      console.log("array as written when WLI removed from item page: ", testVar)
       updateDbWishlist({
         variables: {
           email: user.email,
-          wishlist: `{${filteredWishlist.map((wli) => wli)}}`,
+          wishlist: `{${itemRemovedWishlist.map((wli) => wli)}}`,
         },
       })
       refetch()
@@ -212,11 +213,11 @@ export default function Product({ data: { product, suggestions } }) {
       if (customerLoading) {
         return
       }
-      const newWishlist = [...dbWishlist, variant.id]
+      const itemAddedWishlist = [...dbWishlist, variant.id]
       updateDbWishlist({
         variables: {
           email: user.email,
-          wishlist: `{${newWishlist.map((wli) => wli)}}`,
+          wishlist: `{${itemAddedWishlist.map((wli) => wli)}}`,
         },
       })
       setItemInWishlist(true)
