@@ -32,9 +32,9 @@ const onRedirectCallback = (appState) => {
 }
 
 export const wrapRootElement = ({ element }) => {
-  const domain = process.env.AUTH0_DOMAIN
-  const clientId = process.env.AUTH0_CLIENTID
-  const callback = process.env.AUTH0_CALLBACK
+  const domain = process.env.GATSBY_AUTH0_DOMAIN
+  const clientId = process.env.GATSBY_AUTH0_CLIENTID
+  const callback = process.env.GATSBY_AUTH0_CALLBACK
   
   return (
     <StoreProvider>
