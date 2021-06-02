@@ -15,12 +15,24 @@ const WishlistItems = ({ wishlist, updateWishlist }) => {
         edges {
           node {
             id
+            storefrontId
             displayName
             title
             price
+            availableForSale
             product {
+              priceRangeV2 {
+                maxVariantPrice {
+                  currencyCode
+                  amount
+                }
+                minVariantPrice {
+                  amount
+                  currencyCode
+                }
+              }
               images {
-                gatsbyImageData(layout: CONSTRAINED, width: 300 )
+                gatsbyImageData(layout: CONSTRAINED, width: 300)
               }
             }
           }

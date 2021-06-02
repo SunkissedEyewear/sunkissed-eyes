@@ -10,7 +10,8 @@
   padding: calc(var(--size-gutter-raw) / 1);
   margin-bottom: var(--size-gutter-raw);
   &:hover {
-    .removeBtn {
+    .removeBtn,
+    .addToCartWrapper {
       opacity: 1;
     }
   }
@@ -35,7 +36,9 @@
   display: flex;
   align-items: center;
   justify-content: start;
-  aspect-ratio: 1;
+  img {
+    aspect-ratio: 1;
+  }
 }
 
 .nameAndPrice {
@@ -57,4 +60,15 @@
   margin-top: var(--space-sm);
   color: var(--grey-40);
   text-transform: lowercase;
+}
+
+.addToCartWrapper {
+  opacity: 0;
+  margin-top: var(--space-lg);
+  display: flex;
+  align-items: center;
+  transition: var(--transition-2);
+  & > * {
+    width: 100% !important;
+  }
 }

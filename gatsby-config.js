@@ -39,6 +39,7 @@ module.exports = {
       },
     },
     "gatsby-plugin-image",
+    "gatsby-plugin-offline",
     "gatsby-plugin-sharp",
     "gatsby-plugin-layout",
     "gatsby-plugin-sass",
