@@ -17,7 +17,7 @@
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "c": "gatsby clean"
   },
   "dependencies": {
     "@apollo/client": "^3.3.19",
@@ -37,7 +37,7 @@
     "gatsby-plugin-sitemap": "^4.0.0",
     "gatsby-source-filesystem": "^3.4.0",
     "gatsby-source-graphql": "^3.6.0",
-    "gatsby-source-instagram": "^0.9.0",
+    "gatsby-source-instagram-all": "^4.2.0",
     "gatsby-source-shopify": "rc",
     "gatsby-transformer-sharp": "^3.4.0",
     "graphql": "^15.5.0",

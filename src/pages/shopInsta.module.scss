@@ -1,0 +1,13 @@
+.instaContainer {
+  display: grid;
+  gap: var(--vp-sm);
+  grid-template-columns: var(--product-grid);
+}
+
+.instaPost {
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  @media (max-width: 1024px) {
+    margin: 0 var(--vp-md);
+  }
+}

@@ -33,9 +33,10 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-instagram`,
+      resolve: `gatsby-source-instagram-all`,
       options: {
-        username: `42850485`,
+        access_token:
+          "IGQVJWdEhyOVk4SmpJUXhuWVpIS1R4UWM2aFpSdlRoUjAtVHVGVnFYdXJUM0ZAlaTNLZAzl2UkhZAd1RtOWZADYVgzai1ycklpUk9LZAml4S0VTckgxaWIzUk05aGVNSjYzZAWRSU2NucTc2ZAzdNSWRQQmdUXwZDZD",
       },
     },
     "gatsby-plugin-image",

@@ -35,7 +35,7 @@ export function Navigation({ className }) {
       <Link
         key="insta"
         className={navLink}
-        to="/products/"
+        to="/shopInsta/"
       >
         shop insta
       </Link>
