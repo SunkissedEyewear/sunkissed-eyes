@@ -45,7 +45,7 @@ const WishlistItem = ({ itemData, updateWishlist }) => {
   return (
     <div className={wlItem}>
       <button onClick={removeFromWL} className={removeBtn}>
-        remove from wishlist &nbsp; <span>&times;</span>
+        <p>remove from wishlist</p> &nbsp; <span>&times;</span>
       </button>
       <div className={imageWrapper}>
         <GatsbyImage image={imageData} />
@@ -56,7 +56,11 @@ const WishlistItem = ({ itemData, updateWishlist }) => {
       </div>
       <div className={variantName}>• {title}</div>
       <div className={addToCartWrapper}>
-        <AddToCart available={availableForSale} quantity={1} variantId={storefrontId}/>
+        <AddToCart
+          available={availableForSale}
+          quantity={1}
+          variantId={storefrontId}
+        />
       </div>
     </div>
   )

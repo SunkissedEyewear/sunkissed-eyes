@@ -15,6 +15,13 @@
       opacity: 1;
     }
   }
+  @media (max-width: 1024px) {
+    padding: 0 var(--vp-md);
+    .removeBtn,
+    .addToCartWrapper {
+      opacity: 1;
+    }
+  }
 }
 
 .removeBtn {
@@ -27,7 +34,25 @@
   margin-left: auto;
   transition: var(--transition-2);
   span {
-    font-size: var(--text-3xl);
+    font-size: var(--text-2xl);
+  }
+  p {
+    padding: 0;
+    margin: 0;
+  }
+  &:hover {
+    span,
+    p {
+      color: var(--text-color);
+    }
+  }
+  @media (max-width: 1024px) {
+    p {
+      display: none;
+    }
+    span {
+      font-size: var(--text-3xl);
+    }
   }
 }
 
@@ -38,6 +63,9 @@
   justify-content: start;
   img {
     aspect-ratio: 1;
+  }
+  @media (max-width: 1024px) {
+    width: 100%;
   }
 }
 

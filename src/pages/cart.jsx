@@ -43,8 +43,7 @@ export default function CartPage() {
           <div className={emptyStateContainer}>
             <h1 className={emptyStateHeading}>Your cart is empty</h1>
             <p>
-              Looks like you haven’t found anything yet. We understand that
-              sometimes it’s hard to chose — maybe this helps:
+              Looks like you haven’t found anything yet. Sometimes it’s hard to choose! Maybe this helps :)
             </p>
             <Link to="/search?s=BEST_SELLING" className={emptyStateLink}>
               View trending products

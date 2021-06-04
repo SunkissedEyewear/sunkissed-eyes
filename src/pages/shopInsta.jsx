@@ -45,8 +45,8 @@ export const query = graphql`
                 width: 500
                 quality: 80
                 formats: [AVIF, WEBP]
-                placeholder: TRACED_SVG
-                tracedSVGOptions: { color: "#f8cbd2" }
+                placeholder: DOMINANT_COLOR
+                # tracedSVGOptions: { color: "#f8cbd2" }
               )
             }
           }
