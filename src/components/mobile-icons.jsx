@@ -54,10 +54,10 @@ export function MobileIcons({ toggleMenu }) {
             </>
           )}
         </Toast>
-        <div className={mobileIcon}>
+        {/* <Link to="/wishlist" className={mobileIcon}>
           <AccountIcon />
-        </div>
-        <Link to="/search" className={mobileIcon}>
+        </Link> */}
+        <Link to="/wishlist" className={mobileIcon}>
           <WishlistIcon />
         </Link>
       </div>

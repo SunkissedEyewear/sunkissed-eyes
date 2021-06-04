@@ -141,11 +141,12 @@
   width: 70%;
   padding: 0 var(--space-2xl);
   @media (max-width: 1024px) {
+    background-color: var(--grey-5);
     width: 100%;
     &:focus,
     &:focus-within,
     &:active {
-      border: 1px solid var(--grey-10);
+      border: 1px solid var(--pink-80);
     }
   }
 }
@@ -202,12 +203,13 @@
   box-shadow: var(--shadow);
   border-radius: var(--radius-lg);
   @media (max-width: 1024px) {
+    background-color: var(--grey-5);
     margin-top: var(--vp-sm);
     width: 50%;
     &:focus,
     &:focus-within,
     &:active {
-      border: 1px solid var(--grey-10);
+      border: 1px solid var(--pink-80);
     }
   }
   .sortIcon {
