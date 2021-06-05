@@ -41,7 +41,7 @@ export function MobileNavigation({ toggleMenu }) {
       >
         shop insta
       </Link>
-      {productTypes.map((name) => (
+      {/* {productTypes.map((name) => (
         <Link
           key={name}
           className={navLink}
@@ -50,15 +50,7 @@ export function MobileNavigation({ toggleMenu }) {
         >
           {name}
         </Link>
-      ))}
-      <Link
-        key="All"
-        className={navLink}
-        to="/products/"
-        activeClassName={activeLink}
-      >
-        blog
-      </Link>
+      ))} */}
       <Link
         key="All"
         className={navLink}

@@ -1,5 +1,5 @@
 .mobileIcons {
-  height: var(--vp-xl);
+  height: calc(var(--vp-lg) - 2vh);
   width: 100%;
   display: flex;
   align-items: center;

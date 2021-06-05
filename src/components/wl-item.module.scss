@@ -16,7 +16,9 @@
     }
   }
   @media (max-width: 1024px) {
-    padding: 0 var(--vp-md);
+    max-height: unset;
+    padding-left: var(--vp-md);
+    padding-right: var(--vp-md);
     .removeBtn,
     .addToCartWrapper {
       opacity: 1;
@@ -81,7 +83,7 @@
   font-weight: var(--bold);
 }
 .itemPrice {
-  // font-weight: var(--light);
+  opacity: 1;
 }
 
 .variantName {

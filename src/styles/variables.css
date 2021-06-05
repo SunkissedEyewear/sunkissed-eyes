@@ -3,10 +3,11 @@
   /* font-family */
   --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
     sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  --font-body: 'Mulish', sans-serif, "Segoe UI", Helvetica, Arial,
-    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-body: "Mulish", sans-serif, "Segoe UI", Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   /* palette */
   --black-fade-5: rgba(0, 0, 0, 0.05);
+  --black-fade-10: rgba(0, 0, 0, 0.1);
   --black-fade-20: rgba(0, 0, 0, 0.2);
   --black-fade-40: rgba(0, 0, 0, 0.4);
   --grey-90: #232129;
@@ -18,10 +19,10 @@
   --green-80: #088413;
   --green-50-rgb: 55, 182, 53;
   --pink-80: #f8cbd2;
-  --sun-80: #EDBC00;
-  --kiss-80: #FF2F4E;
-  --ocean-80: #B9D1DC;
-  --ocean-80: #2391B4;
+  --sun-80: #edbc00;
+  --kiss-80: #ff2f4e;
+  --ocean-80: #2391b4;
+  --ocean-80: #80b5cd;
   --green-50-rgb: 55, 182, 53;
   --white: #ffffff;
 
@@ -40,7 +41,6 @@
   --level-eight: 800;
   --level-nine: 900;
   --level-top: 999;
-
 
   /* radii */
   --radius-sm: 4px;
@@ -102,10 +102,10 @@
   /* transitions */
   --transition: box-shadow 0.125s ease-in;
   --transition-std: all 1s ease-in-out;
-  --transition-2: all .4s ease-in-out;
+  --transition-2: all 0.4s ease-in-out;
 
   /* shadows */
-  --shadow: 4px 4px 12px var(--black-fade-5);
+  --shadow: 4px 4px 12px var(--black-fade-10);
 
   /* text */
   /* color */
@@ -134,7 +134,6 @@
 
   /* product */
   --product-grid: 1fr;
-
 
   /* breakpoints */
   --phone: 425px;
@@ -165,5 +164,18 @@
 @media (min-width: 1280px) {
   :root {
     --product-grid: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 1024px) {
+  :root {
+    /* - og size --vp-sm: 2.5vh; */
+    --vp-sm: 3vh;
+    /* - og size --vp-md: 5vh; */
+    --vp-md: 6vh;
+    /* - og size --vp-lg: 9vh; */
+    --vp-lg: 11vh;
+    /* - og size --vp-xl: 13vh; */
+    --vp-xl: 15vh;
   }
 }

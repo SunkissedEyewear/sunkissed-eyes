@@ -1,5 +1,6 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { StoreContext } from "../context/store-context"
+import gsap from 'gsap'
 
 import {
   mobileMenu,
@@ -7,6 +8,7 @@ import {
   menuButton,
   menuContent,
   menuHeader,
+  menuClose,
   closeButton,
   logoWrapper,
   cartWrapper,
@@ -17,16 +19,40 @@ import { CartButton } from "./cart-button"
 import { Navigation } from "./navigation"
 import { NavRight } from "./nav-right"
 import { MobileIcons } from './mobile-icons'
+import { CrossIcon } from '../icons/cross'
 import { MobileNavigation } from './mobile-nav'
 import SocialLinks from "./social-links"
 import { Link } from "gatsby"
 
+
 const MenuButton = ({ toggleMenu, menuOpen }) => {
+  
+  useEffect(() => {
+    gsap.set(".close-button", {
+      transformOrigin: "bottom",
+      y: "5px",
+      scale: 1.25,
+    })
+    
+    if (menuOpen) {
+      gsap.to(".close-button", {
+        delay: .25,
+        opacity: 1,
+      })
+    } else {
+      gsap.to(".close-button", {
+        delay: .25,
+        opacity: 0,
+      })
+    }
+  }, [menuOpen])
+
   return (
     <div
       className={`${menuButton} ${menuOpen && closeButton}`}
       onClick={toggleMenu}
     >
+      {menuOpen && <div className="close-button" style={{ opacity: 0, fontSize: "var(--text-3xl)" }}>&times;</div>}
       <span></span>
       <span></span>
       <span></span>

@@ -4,7 +4,6 @@
   "private": false,
   "description": "ECommerce site selling sunglasses and other eyewear.",
   "author": "James Walker",
-  "license": "0BSD",
   "keywords": [
     "gatsby",
     "shopify",
@@ -13,7 +12,7 @@
     "e-commerce"
   ],
   "scripts": {
-    "develop": "gatsby develop -H 0.0.0.0 -p 8000",
+    "develop": "gatsby develop -o -H 0.0.0.0 -p 8000",
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
@@ -46,6 +45,7 @@
     "locomotive-scroll": "^4.1.1",
     "lodash.debounce": "^4.0.8",
     "lodash.isequal": "^4.5.0",
+    "ngrok": "^4.0.1",
     "query-string": "^7.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -55,5 +55,8 @@
     "sass": "^1.32.12",
     "shopify-buy": "^2.11.0",
     "urql": "^2.0.2"
+  },
+  "devDependencies": {
+    "gatsby-plugin-ngrok-tunneling": "^1.1.5"
   }
 }

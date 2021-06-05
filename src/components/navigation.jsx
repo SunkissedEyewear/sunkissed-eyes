@@ -22,22 +22,23 @@ export function Navigation({ className }) {
         className={navLink}
         to="/products/"
         activeClassName={activeLink}
-      >
+        >
         shop
       </Link>
       <Link
         key="collections"
         className={navLink}
         to="/products/"
-      >
+        >
         collections
       </Link>
       <Link
-        key="insta"
+        key="shopInsta"
         className={navLink}
+        activeClassName={activeLink}
         to="/shopInsta/"
       >
-        shop insta
+        shopInsta
       </Link>
       {productTypes.map((name) => (
         <Link

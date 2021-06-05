@@ -5,7 +5,7 @@ import { formatPrice } from "../utils/format-price"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { getShopifyImage } from "gatsby-source-shopify"
 import DeleteIcon from "../icons/delete"
-import CrossIcon from '../icons/cross'
+import { CrossIcon } from '../icons/cross'
 import { NumericInput } from "./numeric-input"
 import {
   title,

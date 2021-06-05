@@ -1,12 +1,13 @@
 import * as React from "react"
 
-function CrossIcon(props) {
+export function CrossIcon(props, { classN }) {
   return (
     <svg
       width={24}
       height={24}
       viewBox="0 0 24 24"
       fill="none"
+      className={classN}
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
@@ -20,4 +21,3 @@ function CrossIcon(props) {
   )
 }
 
-export default CrossIcon

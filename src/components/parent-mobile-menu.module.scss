@@ -46,6 +46,7 @@
     }
   }
   .menuButton {
+    position: relative;
     grid-area: menu;
     align-self: center;
     justify-self: center;
@@ -55,23 +56,36 @@
     flex-direction: column;
     align-items: flex-end;
     justify-content: space-evenly;
+    transition: var(--transition-2);
     &.closeButton {
-      background-color: red;
+      span {
+        opacity: 0;
+        // transform-origin: right;
+        // transform: scaleX(0);
+      }
     }
     span {
+      position: absolute;
       background-color: var(--text-color);
       height: 2px;
       width: 90%;
       border-radius: var(--radius-rounded);
+      transition: var(--transition-2);
       &:nth-child(1) {
         max-width: 30px;
         width: 55%;
+        top: 20%;
+        right: 0;
       }
       &:nth-child(2) {
+        top: 50%;
+        right: 0;
         max-width: 45px;
         width: 80%;
       }
       &:nth-child(3) {
+        top: 80%;
+        right: 0;
         max-width: 25px;
         width: 40%;
       }
@@ -80,13 +94,14 @@
 }
 
 .menuContent {
-  height: calc(90vh - var(--size-input));
+  min-height: calc(85vh - var(--size-input));
   width: 100%;
   border-radius: 0 0  var(--radius-lg) var(--radius-lg);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  
   .mobileSocial {
     background-color: var(--text-color);
     width: 100%;
