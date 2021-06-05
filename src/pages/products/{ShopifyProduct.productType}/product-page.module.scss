@@ -7,8 +7,8 @@
   grid-template-areas: "images details";
   @media (max-width: 1024px) {
     overflow-x: hidden;
-    grid-template-columns: 100vh;
-    grid-template-rows: 40vh max-content;
+    grid-template-columns: 1fr;
+    grid-template-rows: max-content minmax(80vh, max-content);
     grid-template-areas:
       "images"
       "details";
@@ -60,6 +60,19 @@
   }
 }
 
+.scrollIndicator {
+  display: none;
+  @media (max-width: 1024px) {
+    display: block;
+    direction: ltr;
+    z-index: var(--level-one);
+    position: absolute;
+    bottom: var(--space-lg);
+    left: var(--space-lg);
+    color: var(--black-fade-40);
+  }
+}
+
 .productImageList {
   display: flex;
   flex-direction: column;
@@ -101,9 +114,9 @@
   padding: 0 calc(var(--size-input) * 1.5);
   @media (max-width: 1024px) {
     padding: 0 var(--size-input);
-    height: 95vh;
+    padding-bottom: 20vh;
+    min-height: 115vh;
     width: 100vw;
-    padding-bottom: 15vh;
     background-color: var(--white);
     align-items: center;
     justify-content: flex-start;
@@ -126,6 +139,9 @@
     align-items: center;
     padding: var(--vp-md);
     width: 100vw;
+    & > * {
+      padding: var(--vp-sm) 0;
+    }
   }
 }
 
@@ -183,6 +199,10 @@
   min-width: 80%;
   @media (max-width: 1024px) {
     padding: 0;
+    justify-content: center;
+    span {
+      margin: 0 var(--vp-sm);
+    }
   }
 }
 
@@ -192,19 +212,18 @@
     path {
       &:nth-child(2) {
         fill: lightpink;
-        opacity: .5;
+        opacity: 0.5;
       }
     }
   }
   &.empty {
     path {
       &:nth-child(2) {
-        fill: transparent
+        fill: transparent;
       }
     }
   }
 }
-
 
 .visuallyHidden {
   position: absolute;
@@ -239,8 +258,8 @@
   }
   @media (max-width: 1024px) {
     &:not(:last-child) {
-    margin-right: var(--vp-md);
-  }
+      margin-right: var(--vp-md);
+    }
   }
 }
 
@@ -251,7 +270,7 @@
   align-items: flex-start;
   justify-content: center;
   & > * {
-    margin-bottom: var(--size-gap);
+    margin-bottom: var(--size-gutter-raw);
   }
 }
 
@@ -302,7 +321,6 @@
   padding-right: var(--space-2xl);
   width: 100%;
 }
-
 
 .labelFont {
   font-size: var(--space-lg);
@@ -355,9 +373,8 @@
 //     /* grid-template-columns: 1fr 2fr; */
 //   }
 //   .addToCartStyle {
-    // grid-template-columns: min-content max-content;
-   
-    
+// grid-template-columns: min-content max-content;
+
 //   }
 // }
 

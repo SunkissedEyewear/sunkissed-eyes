@@ -36,7 +36,7 @@ export function MobileNavigation({ toggleMenu }) {
       <Link
         key="All"
         className={navLink}
-        to="/products/"
+        to="/shopInsta/"
         activeClassName={activeLink}
       >
         shop insta

@@ -6,6 +6,7 @@ import { GatsbyImage, getSrc } from "gatsby-plugin-image"
 import { StoreContext } from "../../../context/store-context"
 import { useAuth0 } from "@auth0/auth0-react"
 import { useMutation, useQuery, gql } from "@apollo/client"
+import gsap from 'gsap'
 
 import { AddToCart } from "../../../components/add-to-cart"
 import { NumericInput } from "../../../components/numeric-input"
@@ -18,6 +19,7 @@ import {
   container,
   header,
   imageScrollWrapper,
+  scrollIndicator,
   productImageWrapper,
   productImageList,
   scrollForMore,
@@ -188,6 +190,7 @@ export default function Product({ data: { product, suggestions } }) {
 
   const fakeFilteredList = `"{${fakeWishlist.map(i => i)}}"`
   const addRemoveFromWishlist = () => {
+
     //   + if in list, useMutation to remove from list
     const dbWishlist =
       customerData !== undefined ? customerData.Customers[0].wishlist : null
@@ -224,6 +227,18 @@ export default function Product({ data: { product, suggestions } }) {
     }
   }
 
+  useEffect(() => {
+    gsap.from("#scroll-indicator", {
+      duration: 1,
+      opacity: 0,
+    })
+    gsap.to('#scroll-indicator', {
+      delay: 2,
+      duration: 3,
+      opacity: 0
+    })
+  }, [])
+
   return (
     <>
       <Seo
@@ -240,6 +255,7 @@ export default function Product({ data: { product, suggestions } }) {
                 ref={pImageWrapRef}
                 data-scroll-section
               >
+                <span id="scroll-indicator" className={scrollIndicator}>scroll for more &rarr;</span>
                 <div
                   className={imageScrollWrapper}
                   role="group"
@@ -278,11 +294,13 @@ export default function Product({ data: { product, suggestions } }) {
                 <h1 className={header}>{title}</h1>
                 <h2 className={subHeader}>
                   <span>{price}</span>
-                  <span onClick={addRemoveFromWishlist}>
-                    <HeartIcon
-                      classN={`${heart} ${itemInWishlist ? filled : empty}`}
-                    />
-                  </span>
+                  {isAuthenticated && (
+                    <span onClick={addRemoveFromWishlist}>
+                      <HeartIcon
+                        classN={`${heart} ${itemInWishlist ? filled : empty}`}
+                      />
+                    </span>
+                  )}
                 </h2>
               </div>
               <div className={colorsContainer}>
