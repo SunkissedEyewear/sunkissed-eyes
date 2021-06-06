@@ -1,4 +1,4 @@
-import * as React from "react"
+import React, { useEffect, useState } from "react"
 import { useLocation } from "@reach/router"
 import { graphql } from "gatsby"
 import slugify from "@sindresorhus/slugify"
@@ -173,7 +173,8 @@ function SearchPage({
   // If we're using the default filters, use the products from the Gatsby data layer.
   // Otherwise, use the data from search.
   const productList = (isDefault ? products.edges : data?.products?.edges) || []
-  console.log('isDefault: ', isDefault);
+  
+
 
   return (
     <>
@@ -241,17 +242,19 @@ function SearchPage({
             </p>
           ) : (
             <p className={resultsStyle}>
-              Search results{" "}
               {filters.term && (
                 <>
-                  for "<span>{filters.term}</span>"
+                  Search results for "<span>{filters.term}</span>"
                 </>
               )}
             </p>
           )}
           <ul className={productListStyle}>
             {productList.map(({ node }) => {
-              console.log('node images from search page product list: ', node.images);
+              console.log(
+                "node images from search page product list: ",
+                node.images
+              )
 
               return (
                 <li className={productListItem} key={node.id}>
@@ -313,14 +316,22 @@ function SearchBar({ defaultTerm, setFilters }) {
   }, 200), [setFilters]);
 
   return (
-    <form onSubmit={(e) => e.preventDefault()} className={searchForm}>
+    <form
+      onSubmit={(e) => e.preventDefault()}
+      onKeyDown={(e) => {
+        if (e.key === "Enter") {
+          e.target.blur()
+        }
+      }}
+      className={searchForm}
+    >
       <SearchIcon aria-hidden className={searchIcon} />
       <input
         type="text"
         value={term}
         onChange={(e) => {
           setTerm(e.target.value)
-          debouncedSetFilters(e.target.value);
+          debouncedSetFilters(e.target.value)
         }}
         placeholder="Search..."
       />
@@ -329,8 +340,8 @@ function SearchBar({ defaultTerm, setFilters }) {
           className={clearSearch}
           type="reset"
           onClick={() => {
-            setTerm('');
-            setFilters(filters => ({ ...filters, term: "" }))
+            setTerm("")
+            setFilters((filters) => ({ ...filters, term: "" }))
           }}
           aria-label="Clear search query"
         >

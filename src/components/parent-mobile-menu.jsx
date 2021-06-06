@@ -98,7 +98,7 @@ export const MobileMenu = ({ menuOpen, toggleMenu }) => {
         {menuOpen && (
           <div className={menuContent}>
             <MobileIcons toggleMenu={conditionalClose} />
-            <MobileNavigation toggleMenu={conditionalClose} />
+            <MobileNavigation toggleMenu={conditionalClose} menuOpen={menuOpen} />
             <SocialLinks classN={mobileSocial} />
           </div>
         )}

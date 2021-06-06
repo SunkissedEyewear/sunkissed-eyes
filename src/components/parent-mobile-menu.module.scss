@@ -1,10 +1,12 @@
 .mobileMenu {
-  z-index: var(--level-one);
+  z-index: var(--level-two);
   position: fixed;
   top: var(--vp-sm);
   left: var(--vp-sm);
-  min-height: var(--vp-lg);
-  width: calc(100% - 5vh);
+  top: var(--space-xl);
+  left: var(--space-xl);
+  min-height: var(--size-input);
+  width: calc(100% - (var(--space-xl) * 2) );
   background-color: var(--white);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow);
@@ -15,9 +17,9 @@
 }
 
 .menuHeader {
-  height: var(--vp-lg);
+  height: var(--size-input);
   width: 100%;
-  padding: 0 var(--vp-sm);
+  padding: 0 var(--space-md);
   display: grid;
   grid-template-columns: 4fr 1fr 1fr;
   grid-template-areas: "logo cart menu";

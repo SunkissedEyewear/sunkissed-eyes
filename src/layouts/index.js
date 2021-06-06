@@ -29,8 +29,6 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 })
 
-
-
 export default function Layout({ children }) {
   const containerRef = useRef(null)
   const [isMobile, setIsMobile] = useState(false)

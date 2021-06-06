@@ -11,6 +11,19 @@
   font-weight: var(--medium);
 }
 
+.dropDownBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-sm);
+  margin-left: auto;
+  height: var(--space-xl);
+  width: var(--space-xl);
+  transform: translateY(2px) scale(1.55);
+  border-radius: var(--radius-rounded);
+  transition: all .2s;
+}
+
 .navLink {
   cursor: pointer;
   text-decoration: none;
@@ -24,9 +37,11 @@
   border-radius: var(--radius-rounded);
   &:active,
   &:hover,
-  &:focus {
-    background-color: var(--black-fade-5);
+  &:focus,
+  &:focus-within {
+    background-color: transparent;
   }
+  -webkit-tap-highlight-color: transparent
 }
 
 // .activeLink,
