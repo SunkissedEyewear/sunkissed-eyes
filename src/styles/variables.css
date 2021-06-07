@@ -102,7 +102,7 @@
   /* transitions */
   --transition: box-shadow 0.125s ease-in;
   --transition-std: all 1s ease-in-out;
-  --transition-2: all 0.4s ease-in-out;
+  --transition-2: all 0.3s ease-in-out;
 
   /* shadows */
   --shadow: 4px 4px 12px var(--black-fade-10);
