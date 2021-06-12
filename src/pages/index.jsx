@@ -1,7 +1,6 @@
 import React from "react"
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { graphql } from "gatsby"
-import gsap from 'gsap'
 
 import {
   collage,

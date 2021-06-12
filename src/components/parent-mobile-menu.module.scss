@@ -17,7 +17,7 @@
 }
 
 .menuHeader {
-  height: var(--size-input);
+  height: calc(var(--size-input) * 1.2);
   width: 100%;
   padding: 0 var(--space-md);
   display: grid;
@@ -28,6 +28,8 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    padding: var(--space-md);
+    padding-bottom: var(--space-lg);
   }
   .cartWrapper {
     grid-area: cart;
@@ -52,6 +54,7 @@
     grid-area: menu;
     align-self: center;
     justify-self: center;
+    padding-right: var(--space-md);
     height: 50%;
     width: 100%;
     display: flex;
@@ -77,17 +80,17 @@
         max-width: 30px;
         width: 55%;
         top: 20%;
-        right: 0;
+        right: var(--space-md);
       }
       &:nth-child(2) {
         top: 50%;
-        right: 0;
+        right: var(--space-md);
         max-width: 45px;
         width: 80%;
       }
       &:nth-child(3) {
         top: 80%;
-        right: 0;
+        right: var(--space-md);
         max-width: 25px;
         width: 40%;
       }

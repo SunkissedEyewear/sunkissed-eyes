@@ -1,18 +1,10 @@
 import * as React from "react"
 import { Link } from "gatsby"
-import { Layout } from "../components/layout"
 import { StoreContext } from "../context/store-context"
 import { LineItem } from "../components/line-item"
 import { formatPrice } from "../utils/format-price"
 import {
-  table,
   wrap,
-  totals,
-  summary,
-  collapseColumn,
-  labelColumn,
-  imageHeader,
-  productHeader,
   cartGrid,
   cartSummary,
   summaryDetails,
@@ -110,79 +102,4 @@ export default function CartPage() {
       </main>
     </>
   )
-}
-
-{
-  /*
-<h1 className={title}>Your cart</h1>
-  <table className={table}>
-    <thead>
-      <tr>
-        <th className={imageHeader}>Image</th>
-        <th className={productHeader}>Product</th>
-        <th className={collapseColumn}>Price</th>
-        <th>Qty.</th>
-        <th className={[totals, collapseColumn].join(" ")}>Total</th>
-      </tr>
-    </thead>
-    <tbody>
-      {checkout.lineItems.map((item) => (
-        <LineItem item={item} key={item.id} />
-      ))}
-
-      <tr className={summary}>
-        <td className={collapseColumn}></td>
-        <td className={collapseColumn}></td>
-        <td className={collapseColumn}></td>
-        <td className={labelColumn}>Subtotal</td>
-        <td className={totals}>
-          {formatPrice(
-            checkout.subtotalPriceV2.currencyCode,
-            checkout.subtotalPriceV2.amount
-          )}
-        </td>
-      </tr>
-      <tr className={summary}>
-        <td className={collapseColumn}></td>
-        <td className={collapseColumn}></td>
-        <td className={collapseColumn}></td>
-        <td className={labelColumn}>Taxes</td>
-        <td className={totals}>
-          {formatPrice(
-            checkout.totalTaxV2.currencyCode,
-            checkout.totalTaxV2.amount
-          )}
-        </td>
-      </tr>
-      <tr className={summary}>
-        <td className={collapseColumn}></td>
-        <td className={collapseColumn}></td>
-        <td className={collapseColumn}></td>
-        <td className={labelColumn}>Shipping</td>
-        <td className={totals}>Calculated at checkout</td>
-      </tr>
-      <tr className={grandTotal}>
-        <td className={collapseColumn}></td>
-        <td className={collapseColumn}></td>
-        <td className={collapseColumn}></td>
-        <td className={labelColumn}>Total Price</td>
-        <td className={totals}>
-          {formatPrice(
-            checkout.totalPriceV2.currencyCode,
-            checkout.totalPriceV2.amount
-          )}
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <div className={checkoutButtonWrapper}>
-    <button
-      onClick={handleCheckout}
-      disabled={loading}
-      className={checkoutButton}
-    >
-      Checkout
-    </button>
-  </div>
-*/
 }

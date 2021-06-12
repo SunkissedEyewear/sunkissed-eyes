@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react"
-import { graphql, useStaticQuery } from "gatsby"
+import { graphql } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import gsap from 'gsap'
+
 
 import { AddToCart } from "../components/add-to-cart"
 import { CrossIcon } from "../icons/cross"
@@ -28,8 +30,25 @@ import {
   postUser,
   postTime,
   shareIcons,
+  // TODO - move the below to separate module
+  mobileInstaModal,
+  modalShade,
+  mImageSection,
+  mCloseButton,
+  mPostImage,
+  mProductSection,
+  mProductImage,
+  mProductDetails,
+  mAddToCart,
+  mName,
+  mPrice,
+  mPostCaption,
+  mPostMeta,
+  mShareSection,
 } from "./shopInsta.module.scss"
 
+
+// TODO move to separate component
 export const InstaModal = ({ hideModal, post, getProductFromPost }) => {
   const productInPost = getProductFromPost(post)[0].node
 
@@ -40,6 +59,7 @@ export const InstaModal = ({ hideModal, post, getProductFromPost }) => {
     productInPost.product.images[0].gatsbyImageData
   )
 
+  // close modal with esc key
   useEffect(() => {
     const close = (e) => {
       if (e.keyCode === 27) {
@@ -48,74 +68,157 @@ export const InstaModal = ({ hideModal, post, getProductFromPost }) => {
     }
     window.addEventListener("keydown", close)
     return () => window.removeEventListener("keydown", close)
-  }, [])
+  }, [hideModal])
+
+  // set mobile breakpoint for alternate modal component
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const tabBP = parseInt(
+      getComputedStyle(document.documentElement).getPropertyValue(
+        "--tablet",
+        10
+      )
+    )
+    setIsMobile(window.innerWidth <= tabBP)
+  }, [isMobile])
 
   const timeComponents = post.timestamp.split("-")
 
   return (
-    <div className={instaModal}>
-      <section className={postImage}>
-        <GatsbyImage alt={post.caption} image={postImageData} />
-      </section>
-      <section className={detailsSection}>
-        <div className={product}>
-          <div className={closeButton} onClick={hideModal}>
-            <CrossIcon />
-          </div>
-          <div className={productImage}>
-            <GatsbyImage
-              alt={productInPost.displayName}
-              image={productImageData}
-            />
-          </div>
-          <div className={productDetails}>
-            <div className={itemName}>{productInPost.product.title}</div>
-            <div className={variantName}>{productInPost.title}</div>
-            <div className={price}>${12}</div>
-          </div>
-          <div className={addToCart}>
-            <AddToCart
-              variantId={productInPost.id}
-              quantity={1}
-              available={productInPost.availableForSale}
-            />
-          </div>
+    <>
+      {!isMobile ? (
+        <div className={instaModal}>
+          <section className={postImage}>
+            <GatsbyImage alt={post.caption} image={postImageData} />
+          </section>
+          <section className={detailsSection}>
+            <div className={product}>
+              <div className={closeButton} onClick={hideModal}>
+                <CrossIcon />
+              </div>
+              <div className={productImage}>
+                <GatsbyImage
+                  alt={productInPost.displayName}
+                  image={productImageData}
+                />
+              </div>
+              <div className={productDetails}>
+                <div className={itemName}>{productInPost.product.title}</div>
+                <div className={variantName}>{productInPost.title}</div>
+                <div className={price}>${12}</div>
+              </div>
+              <div className={addToCart}>
+                <AddToCart
+                  variantId={productInPost.id}
+                  quantity={1}
+                  available={productInPost.availableForSale}
+                />
+              </div>
+            </div>
+            <div className={postContent}>
+              <p>"{post.caption}"</p>
+            </div>
+            <div className={postMeta}>
+              <span className={postUser}>
+                <a href={post.permalink}>@{post.username}</a>
+              </span>
+              <span>//</span>
+              <span className={postTime}>
+                {timeComponents[0][0] !== "0"
+                  ? timeComponents[0]
+                  : timeComponents[0][1]}
+                .
+                {timeComponents[1][0] !== "0"
+                  ? timeComponents[1]
+                  : timeComponents[1][1]}
+                .{timeComponents[2].slice(2)}
+              </span>
+            </div>
+            <div className={shareIcons}>
+              <a href={post.permalink}>
+                <FacebookIcon />
+              </a>
+              <a href={post.permalink}>
+                <InstagramIcon />
+              </a>
+              <a href={post.permalink}>
+                <PinterestIcon />
+              </a>
+              <a href={post.permalink}>
+                <LinkIcon />
+              </a>
+            </div>
+          </section>
         </div>
-        <div className={postContent}>
-          <p>"{post.caption}"</p>
-        </div>
-        <div className={postMeta}>
-          <span className={postUser}>
-            <a href={post.permalink}>@{post.username}</a>
-          </span>
-          <span>//</span>
-          <span className={postTime}>
-            {timeComponents[0][0] !== "0"
-              ? timeComponents[0]
-              : timeComponents[0][1]}
-            .
-            {timeComponents[1][0] !== "0"
-              ? timeComponents[1]
-              : timeComponents[1][1]}
-            .{timeComponents[2].slice(2)}
-          </span>
-        </div>
-        <div className={shareIcons}>
-          <a href={post.permalink}>
-            <FacebookIcon />
-          </a>
-          <a href={post.permalink}>
-            <InstagramIcon />
-          </a>
-          <a href={post.permalink}>
-            <PinterestIcon />
-          </a>
-          <a href={post.permalink}>
-            <LinkIcon />
-          </a>
-        </div>
-      </section>
-    </div>
+      ) : (
+        <>
+          <div className={modalShade}></div>
+          <div className={mobileInstaModal} onClick={hideModal}>
+            <div className={mImageSection}>
+              <span className={mCloseButton} onClick={hideModal}>
+                <CrossIcon />
+              </span>
+              <figure className={mPostImage}>
+                <GatsbyImage image={postImageData} alt={post.caption} />
+              </figure>
+            </div>
+            <div className={mProductSection}>
+              <figure className={mProductImage}>
+                <GatsbyImage
+                  image={productImageData}
+                  alt={product.displayName}
+                />
+              </figure>
+              <figcaption className={mProductDetails}>
+                <p className={mName}>{productInPost.product.title}</p>
+                <span className={mPrice}>${12}</span>
+              </figcaption>
+            </div>
+            <div className={mAddToCart}>
+              <AddToCart
+                variantId={productInPost.id}
+                quantity={1}
+                available={productInPost.availableForSale}
+              />
+            </div>
+            <figcaption className={mPostCaption}>
+              <p>{post.caption}</p>
+            </figcaption>
+            <div className={mPostMeta}>
+              <span className={postUser}>
+                <a href={post.permalink}>@{post.username}</a>
+              </span>
+              <span>//</span>
+              <span className={postTime}>
+                {timeComponents[0][0] !== "0"
+                  ? timeComponents[0]
+                  : timeComponents[0][1]}
+                .
+                {timeComponents[1][0] !== "0"
+                  ? timeComponents[1]
+                  : timeComponents[1][1]}
+                .{timeComponents[2].slice(2)}
+              </span>
+            </div>
+            <div className={mShareSection}>
+              <a href={post.permalink}>
+                <FacebookIcon />
+              </a>
+              <a href={post.permalink}>
+                <InstagramIcon />
+              </a>
+              <a href={post.permalink}>
+                <PinterestIcon />
+              </a>
+              <a href={post.permalink}>
+                <LinkIcon />
+              </a>
+            </div>
+          </div>
+        </>
+      )}
+    </>
   )
 }
 
@@ -128,14 +231,26 @@ const ShopInsta = ({ data }) => {
   } = data
   const [showModal, setShowModal] = useState(false)
   const [curPost, setCurPost] = useState(posts[0].node)
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
-    if (showModal) {
+    const tabBP = parseInt(
+      getComputedStyle(document.documentElement).getPropertyValue(
+        "--tablet",
+        10
+      )
+    )
+    setIsMobile(window.innerWidth <= tabBP)
+    console.log('isMobile: ', isMobile);
+  }, [isMobile])
+
+  useEffect(() => {
+    if (showModal && !isMobile) {
       document.documentElement.style.overflow = "hidden"
     } else {
       document.documentElement.style.overflow = "scroll"
     }
-  }, [showModal])
+  }, [showModal, isMobile])
 
   const getProductFromPost = ({ caption }) => {
     return variants.filter(({ node: v }) => caption.includes(v.displayName))

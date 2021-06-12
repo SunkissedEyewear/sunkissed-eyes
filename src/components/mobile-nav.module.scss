@@ -44,13 +44,14 @@
   -webkit-tap-highlight-color: transparent
 }
 
-// .activeLink,
-// .navLink[aria-active="page"] {
-//   color: var(--primary);
-//   text-decoration: underline;
-//   text-decoration-thickness: 2px;
-//   text-underline-offset: 4px;
-// }
+.activeLink,
+.navLink[aria-active="page"] {
+  // color: var(--primary);
+  // text-decoration: underline;
+  // text-decoration-thickness: 2px;
+  // text-underline-offset: 4px;
+  opacity: 1;
+}
 
 // .activeLink:hover,
 // .navLink[aria-active="page"]:hover {

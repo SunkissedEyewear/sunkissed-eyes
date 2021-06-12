@@ -10,7 +10,6 @@ import {
   emptyListHeader,
   headerContainer,
   listHeader,
-  listSubHeader,
 } from "./wishlist-items.module.scss"
 
 const WishlistItems = ({ wishlist, updateWishlist, userName }) => {

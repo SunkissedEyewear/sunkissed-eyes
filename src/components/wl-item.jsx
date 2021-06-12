@@ -1,6 +1,5 @@
 import React from "react"
-import { GatsbyImage, getImageData } from "gatsby-plugin-image"
-import { getShopifyImage } from "gatsby-source-shopify"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 import { AddToCart } from '../components/add-to-cart'
 import { formatPrice } from '../utils/format-price'
@@ -30,7 +29,6 @@ const WishlistItem = ({ itemData, updateWishlist }) => {
   } = itemData
 
   const removeFromWL = () => {
-    
     updateWishlist(id)
   }
   

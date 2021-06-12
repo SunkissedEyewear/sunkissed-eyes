@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useEffect, useRef, useState } from "react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import isEqual from "lodash.isequal"
 import debounce from "lodash.debounce"
 import { GatsbyImage, getSrc } from "gatsby-plugin-image"
@@ -9,11 +9,9 @@ import { useMutation, useQuery, gql } from "@apollo/client"
 import gsap from 'gsap'
 
 import { AddToCart } from "../../../components/add-to-cart"
-import { NumericInput } from "../../../components/numeric-input"
 import { formatPrice } from "../../../utils/format-price"
 import { Seo } from "../../../components/seo"
 import HeartIcon from "../../../icons/heart"
-import { CgChevronRight as ChevronIcon } from "react-icons/cg"
 import {
   productBox,
   container,
@@ -22,7 +20,6 @@ import {
   scrollIndicator,
   productImageWrapper,
   productImageList,
-  scrollForMore,
   noImagePreview,
   optionsWrapper,
   colorOption,
@@ -33,17 +30,13 @@ import {
   filled,
   empty,
   selectVariant,
-  labelFont,
-  breadcrumb,
-  tagList,
+  // breadcrumb,
   addToCartStyle,
   metaSection,
   productDetails,
-  productDescription,
   headerContainer,
   colorsContainer,
 } from "./product-page.module.scss"
-import wishlist from "../../wishlist"
 
 const CUSTOMER_QUERY = gql`
   query MyQuery($_email: String = "") {
@@ -85,19 +78,18 @@ export default function Product({ data: { product, suggestions } }) {
 
   const {
     loading: customerLoading,
-    error,
     data: customerData,
     refetch,
   } = useQuery(CUSTOMER_QUERY, {
     variables: { _email: user?.email },
   })
 
-  const [updateDbWishlist, { data: mutationData }] = useMutation(UPDATE_WISHLIST)
+  const [updateDbWishlist] = useMutation(UPDATE_WISHLIST)
 
   const [itemInWishlist, setItemInWishlist] = useState(false)
 
   const [variant, setVariant] = useState({ ...initialVariant })
-  const [quantity, setQuantity] = useState(1)
+  const [quantity] = useState(1)
 
   const productVariant =
     client.product.helpers.variantForOptions(product, variant) || variant
@@ -133,7 +125,7 @@ export default function Product({ data: { product, suggestions } }) {
 
   const hasVariants = variants.length > 1
   const hasImages = images.length > 0
-  const hasMultipleImages = images.length > 1
+  // const hasMultipleImages = images.length > 1
 
 
   // > ------------ Color Option Changes ------------< //
@@ -154,14 +146,6 @@ export default function Product({ data: { product, suggestions } }) {
 
 
   // > ------------ Wishlist Handling ------------ < //
-  // set itemInWishlist whenever variant or customer changes
-  useEffect(() => {
-    if (customerData !== undefined) {
-      checkProductInWishlist()
-    }
-  }, [variant, customerData])
-
-  // wishlist+product comparison fn
   const checkProductInWishlist = debounce(() => {
     if (isAuthenticated && customerData !== undefined && !isLoading) {
       const wishlist = customerData.Customers[0].wishlist
@@ -171,6 +155,16 @@ export default function Product({ data: { product, suggestions } }) {
     // setItemInWishlist(wishlist.includes(variant.id))
     return itemInWishlist
   }, 500)
+  
+  // set itemInWishlist whenever variant or customer changes
+  useEffect(() => {
+    if (customerData !== undefined) {
+      checkProductInWishlist()
+    }
+  }, [variant, customerData, checkProductInWishlist])
+
+  // wishlist+product comparison fn
+  
 
   // Once product and user info loaded, call compare fn
   useEffect(() => {
@@ -180,15 +174,15 @@ export default function Product({ data: { product, suggestions } }) {
       })
       checkProductInWishlist()
     }
-  }, [isAuthenticated, customerLoading, customerData])
+  }, [user.email, refetch, isAuthenticated, customerLoading, customerData, checkProductInWishlist])
 
   //  -- when heart clicked:
-  const fakeWishlist = [
-    "745e7f79-618e-579c-bcf8-540ceb04a866",
-    "669b81d7-989d-5f87-9179-310e011d5697",
-  ]
+  // const fakeWishlist = [
+  //   "745e7f79-618e-579c-bcf8-540ceb04a866",
+  //   "669b81d7-989d-5f87-9179-310e011d5697",
+  // ]
 
-  const fakeFilteredList = `"{${fakeWishlist.map(i => i)}}"`
+  // const fakeFilteredList = `"{${fakeWishlist.map(i => i)}}"`
   const addRemoveFromWishlist = () => {
 
     //   + if in list, useMutation to remove from list

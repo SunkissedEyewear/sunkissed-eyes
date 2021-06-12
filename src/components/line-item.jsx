@@ -5,14 +5,9 @@ import { formatPrice } from "../utils/format-price"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { getShopifyImage } from "gatsby-source-shopify"
 import DeleteIcon from "../icons/delete"
-import { CrossIcon } from '../icons/cross'
 import { NumericInput } from "./numeric-input"
 import {
-  title,
   remove,
-  variant,
-  totals,
-  priceColumn,
   cartGridItem,
   itemImage,
   itemNames,
@@ -39,10 +34,10 @@ export function LineItem({ item }) {
     Number(item.variant.priceV2.amount)
   )
 
-  const subtotal = formatPrice(
-    item.variant.priceV2.currencyCode,
-    Number(item.variant.priceV2.amount) * quantity
-  )
+  // const subtotal = formatPrice(
+  //   item.variant.priceV2.currencyCode,
+  //   Number(item.variant.priceV2.amount) * quantity
+  // )
 
   const handleRemove = () => {
     removeLineItem(checkout.id, item.id)
@@ -125,42 +120,3 @@ export function LineItem({ item }) {
     </div>
   )
 }
-
-
-{/*
-<tr>
-      <td>
-        {image && (
-          <GatsbyImage
-            key={variantImage.src}
-            image={image}
-            alt={variantImage.altText ?? item.variant.title}
-          />
-        )}
-      </td>
-      <td>
-        <h4 className={title}>{item.title}</h4>
-        <div className={variant}>
-          {item.variant.title === "Default Title" ? "" : item.variant.title}
-        </div>
-        <div className={remove}>
-          <button onClick={handleRemove}>
-            <DeleteIcon /> Remove
-          </button>
-        </div>
-      </td>
-
-      <td className={priceColumn}>{price}</td>
-      <td>
-        <NumericInput
-          disabled={loading}
-          value={quantity}
-          aria-label="Quantity"
-          onIncrement={doIncrement}
-          onDecrement={doDecrement}
-          onChange={(e) => handleQuantityChange(e.currentTarget.value)}
-        />
-      </td>
-      <td className={totals}>{subtotal}</td>
-    </tr>
-*/}

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 // import { LocomotiveScrollProvider } from 'react-locomotive-scroll';
 // import LocomotiveScroll from 'locomotive-scroll';
 import {
@@ -14,8 +14,7 @@ import { NavLeft } from '../components/nav-left';
 import { NavRight } from '../components/nav-right';
 import { MobileMenu } from '../components/parent-mobile-menu';
 
-import { useWindowSize } from '../utils/hooks';
-import { layout, scrollWrap, mobileMenu } from './index.module.scss';
+import { layout, scrollWrap } from './index.module.scss';
 import '../styles/locomotive-scroll.css';
 
 

@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import { useLocation } from "@reach/router"
 import { graphql } from "gatsby"
 import slugify from "@sindresorhus/slugify"
 import debounce from "debounce"
+
 import { CgChevronRight, CgChevronLeft } from "react-icons/cg"
-import { Layout } from "../components/layout"
 import { CrossIcon } from "../icons/cross"
 import SortIcon from "../icons/sort"
 import FilterIcon from "../icons/filter"
 import SearchIcon from "../icons/search"
 import { ProductCard } from "../components/product-card"
+
 import {
   getValuesFromQueryString,
   useProductSearch,
@@ -19,6 +20,7 @@ import { getCurrencySymbol } from "../utils/format-price"
 import { Spinner } from "../components/progress"
 import { Filters } from "../components/filters"
 import { SearchProvider } from "../context/search-provider"
+
 import {
   visuallyHidden,
   main,

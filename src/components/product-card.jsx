@@ -8,7 +8,6 @@ import {
   productHeadingStyle,
   productImageStyle,
   productDetailsStyle,
-  productVendorStyle,
   hoverImage,
   productPrice,
 } from "./product-card.module.scss"
@@ -22,7 +21,6 @@ export function ProductCard({ product }) {
     slug,
     images: [firstImage],
     images: [, , , thirdImage],
-    vendor,
     storefrontImages,
   } = product
   
@@ -34,7 +32,9 @@ export function ProductCard({ product }) {
   )
 
   let storefrontImageData = {}
-  let modelImageData = {}
+  let modelImageData
+  
+  modelImageData = {}
   
   if (storefrontImages) {
     const storefrontImage = storefrontImages.edges[0].node

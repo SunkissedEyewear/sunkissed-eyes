@@ -3,6 +3,10 @@
   display: grid;
   gap: var(--vp-sm);
   grid-template-columns: var(--product-grid);
+  @media (max-width: 1024px) {
+    gap: 2px;
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .instaPost {
@@ -10,7 +14,7 @@
   overflow: hidden;
   aspect-ratio: 1 / 1;
   @media (max-width: 1024px) {
-    margin: 0 var(--vp-md);
+    // margin: 0 var(--vp-md);
   }
 }
 
@@ -150,7 +154,7 @@
   }
 
   .postTime {
-
+    opacity: 1;
   }
 }
 
@@ -168,5 +172,141 @@
   path {
     fill: var(--text-color);
     // stroke: var(--text-color);
+  }
+}
+
+.modalShade {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100vw;
+  background-color: var(--black-fade-80);
+  overflow: visible;
+}
+
+.mobileInstaModal {
+  z-index: var(--level-three);
+  position: fixed;
+  top: calc(var(--size-input) * 0);
+  top: 0;
+  left: var(--space-xl);
+  left: 0;
+  height: calc(90vh - var(--space-md));
+  width: calc(100% - (var(--space-xl) * 2) );;
+  width: 100vw;
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  overflow: scroll;
+  .mImageSection {
+    width: 100vw;
+    height: 100vw;
+    background-color: transparent;
+    .mCloseButton {
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: var(--level-two);
+      padding: var(--space-lg);
+      mix-blend-mode: difference;
+      path {
+        stroke: var(--grey-10);
+      }
+    }
+    .mPostImage {
+      height: 100%;
+      width: 100%;
+      div,
+      img {
+        height: 100%;
+        object-fit: cover;
+      }
+
+    }
+  }
+  .mProductSection {
+    min-height: 25vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    .mProductImage {
+      width: 60%;
+      display: flex;
+      align-items: center;  
+      justify-content: center;
+      div {
+        width: 90%;
+      }
+    }
+    .mProductDetails {
+      width: 40%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      .mName {
+        font-size: var(--text-lg);
+        font-weight: var(--bold);
+      }
+      .mPrice {
+        color: var(--grey-40);
+      }
+    }
+  }
+  .mAddToCart {
+    width: 100%;
+    min-height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    button {
+      align-self: flex-start !important;
+      margin: 0;
+      width: 70%;
+      transform: scale(.8) translateY(calc(-1 * var(--space-lg)));
+      transform: scale(.8);
+    }
+  }
+  .mPostCaption {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 20vh;
+    p {
+      width: 80%;
+      text-align: center;
+      font-style: italic;
+    }
+  }
+  .mPostMeta {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: var(--bold);
+    span {
+      &:not(:last-child) {
+        margin-right: var(--space-md);
+      }
+    }
+    opacity: 1;
+    .postUser {
+      &:hover,
+      &:active,
+      &:focus {
+        color: var(--primary);
+      }
+    }
+  }
+  .mShareSection {
+    width: 100%;
+    padding: var(--space-3xl);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
   }
 }

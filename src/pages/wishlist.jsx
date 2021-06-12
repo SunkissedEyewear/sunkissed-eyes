@@ -5,7 +5,7 @@ import debounce from "lodash.debounce"
 
 import WishlistItems from "../components/wishlist-items"
 
-import { wishlistContainer, wishlistHeader, noItems } from "./wishlist.module.scss"
+import { wishlistContainer, noItems } from "./wishlist.module.scss"
 
 const CUSTOMER_QUERY = gql`
   query MyQuery($_email: String = "") {
@@ -43,7 +43,7 @@ const Wishlist = () => {
     variables: { _email: email },
   })
 
-  const [updateDbWishlist, { data: mutationData }] = useMutation(
+  const [updateDbWishlist] = useMutation(
     UPDATE_WISHLIST
   )
 

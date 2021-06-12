@@ -4,7 +4,6 @@ import { StoreContext } from "../context/store-context"
 import { CartButton } from "./cart-button"
 import SearchIcon from "../icons/search"
 import WishlistIcon from "../icons/wishlist"
-import AccountIcon from '../icons/account'
 import { Toast } from "./toast"
 import {
   mobileIcons,

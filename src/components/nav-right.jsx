@@ -1,15 +1,12 @@
 import * as React from "react"
 import { Link } from "gatsby"
-import { ApolloClient, InMemoryCache, gql, useMutation, useQuery } from "@apollo/client"
+import { gql, useMutation, useQuery } from "@apollo/client"
 import { useAuth0 } from "@auth0/auth0-react"
-
 
 // store context
 import { StoreContext } from "../context/store-context"
 
 // components
-import Logo from "../icons/logo"
-import { Navigation } from "./navigation"
 import { CartButton } from "./cart-button"
 import SearchIcon from "../icons/search"
 import WishlistIcon from "../icons/wishlist"
@@ -19,19 +16,16 @@ import { Toast } from "./toast"
 // styles
 import {
   navRight,
-  logo as logoCss,
   navRightButton,
-  nav,
   internal,
-  social,
   account,
   rotateWrapper,
 } from "./nav-right.module.scss"
 
-const client = new ApolloClient({
-  uri: "https://sunkissed-heroku-db.herokuapp.com/v1/graphql",
-  cache: new InMemoryCache(),
-})
+// const client = new ApolloClient({
+//   uri: "https://sunkissed-heroku-db.herokuapp.com/v1/graphql",
+//   cache: new InMemoryCache(),
+// })
 
 const ADD_CUSTOMER = gql`
   mutation MyMutation($email: String = "", $fl_name: String = "") {
@@ -63,40 +57,43 @@ export function NavRight() {
     user,
     isAuthenticated,
     logout,
-    loginWithRedirect,
     loginWithPopup,
     isLoading,
   } = useAuth0()
 
-  const authZeroStuff = useAuth0()
-  // 
-
   // get function to add customer
-  const [addCustomer, { data: mutationData }] = useMutation(ADD_CUSTOMER)
-  // 
+  const [addCustomer] = useMutation(ADD_CUSTOMER)
+  //
 
   // get customer data to check against existing user
-  const { loading: customerLoading, error, data: customerData, refetch } = useQuery(CUSTOMER_QUERY, {
-    variables: { _email: user?.email},
-  })
-  
+  const { loading: customerLoading, data: customerData, refetch } = useQuery(
+    CUSTOMER_QUERY,
+    {
+      variables: { _email: user?.email },
+    }
+  )
+
   const createCustomer = (userEmail, userName) => {
-    addCustomer({ variables: { email: userEmail, fl_name: userName }})
+    addCustomer({ variables: { email: userEmail, fl_name: userName } })
   }
 
   React.useEffect(() => {
     if (isAuthenticated && user.email && !customerLoading) {
       refetch({ variables: { _email: user.email } })
-      const isNewCustomer = customerData.Customers.length === 0 
+      const isNewCustomer = customerData.Customers.length === 0
       if (isNewCustomer && !isLoading) {
-        
         createCustomer(user.email, user.name)
       } else {
-        
       }
     }
-  }, [isAuthenticated, isLoading, customerData, customerLoading])
-  
+  }, [
+    refetch,
+    user,
+    isAuthenticated,
+    isLoading,
+    customerData,
+    customerLoading,
+  ])
 
   return (
     <div className={navRight}>
@@ -148,10 +145,7 @@ export function NavRight() {
                 logout
               </span>
             ) : (
-              <span
-                className={navRightButton}
-                onClick={() => loginWithPopup()}
-              >
+              <span className={navRightButton} onClick={() => loginWithPopup()}>
                 login
               </span>
             )}

@@ -8,7 +8,6 @@ import {
   menuButton,
   menuContent,
   menuHeader,
-  menuClose,
   closeButton,
   logoWrapper,
   cartWrapper,
@@ -16,10 +15,7 @@ import {
 import Logo from "../icons/logo"
 import { Toast } from "./toast"
 import { CartButton } from "./cart-button"
-import { Navigation } from "./navigation"
-import { NavRight } from "./nav-right"
 import { MobileIcons } from './mobile-icons'
-import { CrossIcon } from '../icons/cross'
 import { MobileNavigation } from './mobile-nav'
 import SocialLinks from "./social-links"
 import { Link } from "gatsby"
