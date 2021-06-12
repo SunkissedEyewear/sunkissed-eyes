@@ -188,13 +188,12 @@
 .mobileInstaModal {
   z-index: var(--level-three);
   position: fixed;
-  top: calc(var(--size-input) * 0);
   top: 0;
-  left: var(--space-xl);
   left: 0;
-  height: calc(90vh - var(--space-md));
+  height: calc(95vh - var(--space-md));
   width: calc(100% - (var(--space-xl) * 2) );;
   width: 100vw;
+  padding-bottom: var(--vp-lg);
   background-color: var(--white);
   display: flex;
   flex-direction: column;
@@ -228,7 +227,7 @@
     }
   }
   .mProductSection {
-    min-height: 25vh;
+    min-height: 35vh;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
